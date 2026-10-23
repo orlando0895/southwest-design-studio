@@ -24,6 +24,7 @@
   }
   function pump() {
     while (loading < 6 && queue.length) {
+      if (ok[queue[0]]) { queue.shift(); continue; }
       (function (i, g) {
         loading++;
         var im = new Image();
@@ -33,6 +34,18 @@
         im.src = BASE + set + "/" + ("00" + i).slice(-3) + ".webp";
       })(queue.shift(), gen);
     }
+  }
+  // pull the frames around where the visitor is to the front of the queue, so a slow scroll stays sharp
+  var lastBump = -99;
+  function bump(f) {
+    var c = Math.round(f);
+    if (Math.abs(c - lastBump) < 3) return;
+    lastBump = c;
+    var want = [];
+    for (var d = -3; d <= 10; d++) { var i = c + d; if (i >= 0 && i <= LAST && !ok[i]) want.push(i); }
+    if (!want.length) return;
+    queue = want.concat(queue.filter(function (i) { return want.indexOf(i) < 0; }));
+    pump();
   }
   function useSet(s) {
     if (s === set) return;
@@ -69,7 +82,7 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.globalAlpha = 1;
     ctx.drawImage(im, c.x, c.y, c.iw * c.s, c.ih * c.s);
-    if (!reduce && a > 0.04 && ok[j] && j !== k) {
+    if (!reduce && k === i && a > 0.04 && ok[j] && j !== i) {
       ctx.globalAlpha = a;
       ctx.drawImage(imgs[j], c.x, c.y, c.iw * c.s, c.ih * c.s);
       ctx.globalAlpha = 1;
@@ -143,6 +156,7 @@
     var p = progress(), f = frameAt(p);
     if (reduce) { var best = STEPS[0]; STEPS.forEach(function (s) { if (Math.abs(s - f) < Math.abs(best - f)) best = s; }); f = best; }
     target = f;
+    bump(f);
     var nxt = reduce ? target : cur + (target - cur) * 0.35;
     if (Math.abs(nxt - target) < 0.01) nxt = target;
     if (nxt !== cur || dirty) {
