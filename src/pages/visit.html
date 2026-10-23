@@ -1,48 +1,109 @@
-<section class="phero">
-  <div class="wrap phero-grid">
-    <div>
-      <p class="label rv">Visit</p>
-      <h1 class="rv" style="--d:.06s">Come see it <em>in person.</em></h1>
-    </div>
-    <p class="lede rv" style="--d:.14s">The showroom sits on Hayden Road in Scottsdale, minutes from the 101. Walk-ins are welcome during showroom hours. For a dedicated design consultation, request a private preview below.</p>
+<section class="ph" style="min-height:76svh" aria-labelledby="vi-h">
+  <div class="ph-media"><img src="{pre}media/walk/d/005.webp" alt="The showroom entry with a floating steel staircase, stone fountain and lit front desk" fetchpriority="high"></div>
+  <div class="wrap">
+    <p class="num rv">Visit</p>
+    <h1 id="vi-h" class="d2 rv" style="--d:.06s;margin-top:1rem">Come see it <em>in person.</em></h1>
+    <p class="lede rv" style="--d:.14s">On Hayden Road in Scottsdale, minutes from the 101. Walk-ins welcome during showroom hours.</p>
   </div>
 </section>
 
-<section class="sec tight">
-  <div class="wrap split" style="align-items:stretch">
-    <div class="map-card rv" style="aspect-ratio:16/11;align-self:center">
-      <img src="{pre}media/clips/l1-mat.jpg" alt="The Southwest Design Studio welcome mat at the front door" loading="lazy" width="1600" height="900">
-      <div class="cap"><b class="serif" style="font-size:1.3rem">You'll know you're here.</b><br><span style="font-size:.92rem;color:var(--ink-soft)">15001 Hayden Rd Ste 111, Scottsdale, AZ 85260</span></div>
+<section class="sec" aria-labelledby="fl-h">
+  <div class="wrap floors">
+    <div>
+      <div class="iso l1" aria-hidden="true">
+        <div class="iso-in">
+          <div class="plate p2">
+            <span class="zn held" data-z="wine" style="--x:4%;--y:6%;--w:28%;--h:40%"></span>
+            <span class="zn held" data-z="closet" style="--x:35%;--y:6%;--w:22%;--h:40%"></span>
+            <span class="zn held" data-z="smart" style="--x:60%;--y:6%;--w:22%;--h:40%"></span>
+            <span class="zn" data-z="shades" style="--x:85%;--y:6%;--w:11%;--h:40%"></span>
+            <span class="zn" data-z="fire" style="--x:4%;--y:54%;--w:22%;--h:40%"></span>
+            <span class="zn" data-z="oak" style="--x:29%;--y:54%;--w:22%;--h:40%"></span>
+            <span class="zn" data-z="carpet" style="--x:54%;--y:54%;--w:20%;--h:40%"></span>
+            <span class="zn" data-z="corridor" style="--x:77%;--y:54%;--w:19%;--h:40%"></span>
+          </div>
+          <div class="plate p1">
+            <span class="zn" data-z="entry" style="--x:4%;--y:56%;--w:30%;--h:38%"></span>
+            <span class="zn" data-z="bath" style="--x:4%;--y:6%;--w:30%;--h:44%"></span>
+            <span class="zn" data-z="kitchens" style="--x:37%;--y:6%;--w:59%;--h:44%"></span>
+            <span class="zn" data-z="surfaces" style="--x:37%;--y:56%;--w:36%;--h:38%"></span>
+            <span class="zn" data-z="cabinetry" style="--x:76%;--y:56%;--w:20%;--h:38%"></span>
+          </div>
+        </div>
+        <p class="iso-lab a"><small>LEVEL</small>01</p><p class="iso-lab b"><small>LEVEL</small>02</p>
+      </div>
+      <p class="small" style="text-align:center">Floor guide, not to scale.</p>
     </div>
-    <div class="rv" style="--d:.1s;display:flex;flex-direction:column;justify-content:center">
-      <h2 style="font-size:clamp(2rem,3.6vw,3rem)">Southwest <em>Design Studio</em></h2>
-      <dl class="facts" style="margin-top:1.8rem">
-        <div style="border-color:var(--line)"><dt style="color:var(--muted)">ADDRESS</dt><dd>15001 Hayden Rd Ste 111<br>Scottsdale, AZ 85260</dd></div>
-        <div style="border-color:var(--line)"><dt style="color:var(--muted)">HOURS</dt><dd>Monday to Friday<br>9:00 AM to 5:00 PM</dd></div>
-        <div style="border-color:var(--line)"><dt style="color:var(--muted)">PHONE</dt><dd><a href="tel:+18776460167">(877) 646-0167</a></dd></div>
-        <div style="border-color:var(--line);border-bottom:1px solid var(--line)"><dt style="color:var(--muted)">FLOORS</dt><dd>Level 1: kitchens, baths, surfaces, cabinetry<br>Level 2: wine room, closet, smart home, fireplaces, carpet, shades</dd></div>
+    <div>
+      <p class="num rv">Two floors</p>
+      <h2 id="fl-h" class="d3 rv" style="margin:1rem 0 1.4rem">Know where you'll start.</h2>
+      <div class="lvl-tabs" role="tablist" aria-label="Showroom levels">
+        <button role="tab" type="button" aria-selected="true" aria-controls="zl1" id="tl1">Level 01</button>
+        <button role="tab" type="button" aria-selected="false" aria-controls="zl2" id="tl2" tabindex="-1">Level 02</button>
+      </div>
+      <ul class="zlist" id="zl1" role="tabpanel" aria-labelledby="tl1">
+        <li><button type="button" data-z="entry"><span class="zn2">01</span><b>The Entry</b><i></i></button></li>
+        <li><button type="button" data-z="kitchens"><span class="zn2">02</span><b>Kitchen Gallery</b><i></i></button></li>
+        <li><button type="button" data-z="bath"><span class="zn2">03</span><b>Bath &amp; Vanity</b><i></i></button></li>
+        <li><button type="button" data-z="surfaces"><span class="zn2">04</span><b>Surfaces Library</b><i></i></button></li>
+        <li><button type="button" data-z="cabinetry"><span class="zn2">05</span><b>Cabinetry Studio</b><i></i></button></li>
+      </ul>
+      <ul class="zlist" id="zl2" role="tabpanel" aria-labelledby="tl2" hidden>
+        <li><button type="button" data-z="wine"><span class="zn2">06</span><b>The Wine Room</b><i>IN PERSON</i></button></li>
+        <li><button type="button" data-z="closet"><span class="zn2">07</span><b>The Closet</b><i>IN PERSON</i></button></li>
+        <li><button type="button" data-z="smart"><span class="zn2">08</span><b>Smart Home</b><i>IN PERSON</i></button></li>
+        <li><button type="button" data-z="shades"><span class="zn2">09</span><b>Window Shades</b><i></i></button></li>
+        <li><button type="button" data-z="fire"><span class="zn2">10</span><b>Fireplace Wall</b><i></i></button></li>
+        <li><button type="button" data-z="oak"><span class="zn2">11</span><b>Oak &amp; Laundry</b><i></i></button></li>
+        <li><button type="button" data-z="carpet"><span class="zn2">12</span><b>Carpet &amp; Rugs</b><i></i></button></li>
+        <li><button type="button" data-z="corridor"><span class="zn2">13</span><b>Southwest Corridor</b><i></i></button></li>
+      </ul>
+    </div>
+  </div>
+  <script type="application/json" id="zones">
+  {
+    "entry":{"lv":1,"t":"The Entry","d":"A floating steel staircase, a stone fountain and the front desk lit with the studio's name.","v":"media/clips/l1-entry.mp4","p":"media/clips/l1-entry.jpg"},
+    "kitchens":{"lv":1,"t":"Kitchen Gallery","d":"Full kitchens side by side: black and brass, bright marble, warm charcoal. Open the drawers.","b":"ZLINE · Viking · Wolf","v":"media/hf/kitchen-black-brass.mp4","p":"media/hf/kitchen-black-brass.jpg"},
+    "bath":{"lv":1,"t":"Bath & Vanity","d":"Vanities in gray, maple and slate under lit mirrors, with vessel sinks.","v":"media/hf/vanity.mp4","p":"media/hf/vanity.jpg"},
+    "surfaces":{"lv":1,"t":"Surfaces Library","d":"Towers of quartz, ultracompact slab and tile. Pull a sample and carry it to the window.","b":"Silestone · Dekton · Daltile · HI-MACS","v":"media/clips/l1-surfaces.mp4","p":"media/clips/l1-surfaces.jpg"},
+    "cabinetry":{"lv":1,"t":"Cabinetry Studio","d":"Door styles and finishes from several cabinet lines, beside waterproof plank flooring.","b":"Designers Choice · Tedd Wood · HydroPro","p":"img/showroom/cabinetry-samples.jpg"},
+    "wine":{"lv":2,"t":"The Wine Room","d":"Glass walls and lit racks from floor to ceiling. Best seen in person.","v":"media/clips/l2-wine.mp4","p":"media/clips/l2-wine.jpg","held":1},
+    "closet":{"lv":2,"t":"The Closet","d":"Light runs through every shelf around a center island. Best seen in person.","v":"media/clips/l2-closet.mp4","p":"media/clips/l2-closet.jpg","held":1},
+    "smart":{"lv":2,"t":"Smart Home","d":"Lighting, shades and climate on one system, in a room built to try it.","b":"Control4","v":"media/hf/smart-home.mp4","p":"media/hf/smart-home.jpg","held":1},
+    "shades":{"lv":2,"t":"Window Shades","d":"Sheer, woven and blackout shades in working frames.","b":"Hunter Douglas","v":"media/clips/l2-shades.mp4","p":"media/clips/l2-shades.jpg"},
+    "fire":{"lv":2,"t":"Fireplace Wall","d":"Three linear fireplaces stacked side by side to compare flame, glass and size.","v":"media/hf/fireplaces.mp4","p":"media/hf/fireplaces.jpg"},
+    "oak":{"lv":2,"t":"Oak & Laundry","d":"Natural oak cabinetry with brass pulls around a working laundry.","v":"media/clips/l2-oak.mp4","p":"media/clips/l2-oak.jpg"},
+    "carpet":{"lv":2,"t":"Carpet & Rugs","d":"Carpet wings and hand-loomed rugs, next to a full tower of cabinet hardware.","b":"Stanton · Antrim · SmartStrand · Berenson","v":"media/clips/l2-carpet.mp4","p":"img/showroom/carpet-hardware.jpg"},
+    "corridor":{"lv":2,"t":"Southwest Corridor","d":"The group behind the studio, its crest above a long linear fire.","v":"media/clips/l2-corridor.mp4","p":"media/clips/l2-corridor.jpg"}
+  }
+  </script>
+</section>
+
+<section class="sec" style="padding-top:0" aria-labelledby="where-h">
+  <div class="wrap prose" style="align-items:start">
+    <div>
+      <h2 id="where-h" class="d3 rv">Southwest Design Studio</h2>
+      <dl class="facts rv" style="margin-top:1.6rem">
+        <div><dt>ADDRESS</dt><dd>15001 Hayden Rd Ste 111<br>Scottsdale, AZ 85260</dd></div>
+        <div><dt>HOURS</dt><dd>Monday to Friday<br>9:00 AM to 5:00 PM</dd></div>
+        <div><dt>PHONE</dt><dd><a href="tel:+18776460167">(877) 646-0167</a></dd></div>
       </dl>
-      <div class="row" style="margin-top:2rem">
-        <a class="btn mag" href="https://maps.google.com?q=Southwest+Design+Studio,+LLC,+15001+Hayden+Rd+Ste+111,+Scottsdale,+AZ+85260" target="_blank" rel="noopener">Get Directions{arrow}</a>
-        <a class="btn line plain" href="tel:+18776460167">Call the Studio</a>
+      <div class="row rv" style="margin-top:1.6rem">
+        <a class="btn" href="https://maps.google.com?q=Southwest+Design+Studio,+LLC,+15001+Hayden+Rd+Ste+111,+Scottsdale,+AZ+85260" target="_blank" rel="noopener">Get Directions{arrow}</a>
+        <a class="btn ghost" href="tel:+18776460167">Call the Studio</a>
       </div>
     </div>
+    <div class="map-wrap rv"><iframe class="map-embed" title="Map to Southwest Design Studio, 15001 Hayden Rd Ste 111, Scottsdale" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Southwest+Design+Studio,+LLC,+15001+Hayden+Rd+Ste+111,+Scottsdale,+AZ+85260&amp;output=embed"></iframe></div>
   </div>
 </section>
 
-<section class="sec tight" aria-label="Map">
-  <div class="wrap" style="height:clamp(320px,42vw,460px)">
-    <iframe class="map-embed" title="Map to Southwest Design Studio, 15001 Hayden Rd Ste 111, Scottsdale" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Southwest+Design+Studio,+LLC,+15001+Hayden+Rd+Ste+111,+Scottsdale,+AZ+85260&amp;output=embed"></iframe>
-  </div>
-</section>
-
-<section class="sec alt" id="preview">
-  <div class="wrap split" style="align-items:start">
+<section class="sec" id="preview" style="padding-top:0" aria-labelledby="pv-h">
+  <div class="wrap prose" style="align-items:start">
     <div>
-      <p class="label rv">Private Preview</p>
-      <h2 class="rv" style="margin-top:1rem">Request a <em>private preview.</em></h2>
-      <p class="lede rv" style="margin-top:1.4rem">Tell us about your project and we will arrange a dedicated walkthrough with a designer, with the rooms and finishes you saved pulled and waiting.</p>
-      <div id="vl-wrap" hidden><p class="label" style="margin-top:2rem">Your visit list</p><div class="vl-chips" id="vl-chips"></div></div>
+      <p class="num rv">Private Preview</p>
+      <h2 id="pv-h" class="d3 rv" style="margin-top:1rem">Request a private preview.</h2>
+      <p class="lede rv" style="margin-top:1.2rem">Tell us about your project. A designer will walk you through, with the rooms and finishes you saved pulled and waiting.</p>
+      <div id="vl-wrap" hidden><p class="small" style="margin-top:1.8rem;font-weight:600;letter-spacing:.1em">YOUR VISIT LIST</p><div class="chipset" id="vl-chips"></div></div>
     </div>
     <form id="preview-form" class="form" novalidate>
       <div class="frow">

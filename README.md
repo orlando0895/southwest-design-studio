@@ -2,20 +2,19 @@
 Southwest Design Studio: interactive showroom website (client project).
 Live: https://orlando0895.github.io/southwest-design-studio/
 
-## What's on the site
-- **Arrival film** hero: 35s silent loop cut in HyperFrames from a real walkthrough of both floors (`media/film.mp4`, phone cut `media/film-portrait.mp4`), with live chapter captions.
-- **3D walkthrough**: WebGL corridor through nine stations, Level 1 to the staircase to Level 2. The frame you arrive at plays its tour clip. Falls back to a swipeable rail on reduced motion or no WebGL.
-- **Floor guide**: Level 1 / Level 2 map; tap a zone for footage, what's on display, and save it.
-- **Kitchen hotspots**, **finish library**, **held-back rooms** (press and hold to peek), **style finder**.
-- **Visit list**: saved rooms, finishes and style follow the visitor to the preview form (chips + prefilled message).
+## The site
+- **Home is the walk.** Scroll plays the real tour from the front door, through the kitchen gallery (pauses for hotspots), the surfaces library and up the stairs to Level 02. Then: three held-back rooms (press and hold to peek), tap-through stories, a visit-list builder (kitchen + real material close-ups), and the visit close.
+- **Visit list** follows the visitor everywhere (bottom bar + sheet) and prefills the private preview form.
+- **About**: the arrival film (play on demand), crafts mosaic. **Services**: full-bleed footage chapters + process. **Portfolio**: full-screen swipe gallery. **Visit**: two-floor guide, map, booking.
 
 ## Media
-`img/showroom/` photos from the Google Business listing. `media/clips/` 720p clips + posters cut from Orlando's tour footage (graded from iPhone HDR).
+- `media/walk/{d,m}/` scroll-walk frames (cut, stabilized and graded from the 69s tour).
+- `media/hf/` Higgsfield camera glides from real photos (kitchens, smart home, vanity, fireplaces). `img/showroom/` Higgsfield 2K upscales of the listing photos.
+- `media/clips/`, `media/stories/` tour clips (landscape / portrait). `media/film*.mp4` the arrival film.
 
 ## Editing
-Page content lives in `src/pages/*.html`; header, footer and meta live in `tools/build.py`.
+Page content: `src/pages/*.html`. Header, menu, footer, meta: `tools/build.py`.
 ```
 python3 tools/build.py
-npx esbuild src/home.js --bundle --minify --format=esm --outfile=js/home.min.js   # only if src/*.js changes
 ```
-Design tokens and rules: `DESIGN.md`. Libraries (GSAP, ScrollTrigger, Lenis, three) and fonts are self-hosted.
+Interactions: `js/main.js` (shared), `js/walk.js` (scroll walk). Styles: `css/style.css`. Design rules: `DESIGN.md`.
