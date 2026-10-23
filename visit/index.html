@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Visit | Southwest Design Studio, Scottsdale AZ">
 <meta property="og:description" content="Visit Southwest Design Studio at 15001 Hayden Rd Ste 111, Scottsdale, AZ 85260. Request a private preview with a designer.">
-<meta property="og:image" content="../media/showroom-poster.jpg">
+<meta property="og:image" content="../media/og.jpg">
 <link rel="preload" href="../fonts/bodoni-moda-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../css/style.css">
@@ -44,16 +44,17 @@
 
 <section class="sec tight">
   <div class="wrap split" style="align-items:stretch">
-    <div class="map-card rv">
-      <img src="../img/living-grand.jpg" alt="Grand showroom-style living room" loading="lazy" width="896" height="1200">
-      <div class="cap"><b class="serif" style="font-size:1.3rem">Southwest Design Studio</b><br><span style="font-size:.92rem;color:var(--ink-soft)">15001 Hayden Rd Ste 111, Scottsdale, AZ 85260</span></div>
+    <div class="map-card rv" style="aspect-ratio:16/11;align-self:center">
+      <img src="../media/clips/l1-mat.jpg" alt="The Southwest Design Studio welcome mat at the front door" loading="lazy" width="1600" height="900">
+      <div class="cap"><b class="serif" style="font-size:1.3rem">You'll know you're here.</b><br><span style="font-size:.92rem;color:var(--ink-soft)">15001 Hayden Rd Ste 111, Scottsdale, AZ 85260</span></div>
     </div>
     <div class="rv" style="--d:.1s;display:flex;flex-direction:column;justify-content:center">
       <h2 style="font-size:clamp(2rem,3.6vw,3rem)">Southwest <em>Design Studio</em></h2>
       <dl class="facts" style="margin-top:1.8rem">
         <div style="border-color:var(--line)"><dt style="color:var(--muted)">ADDRESS</dt><dd>15001 Hayden Rd Ste 111<br>Scottsdale, AZ 85260</dd></div>
         <div style="border-color:var(--line)"><dt style="color:var(--muted)">HOURS</dt><dd>Monday to Friday<br>9:00 AM to 5:00 PM</dd></div>
-        <div style="border-color:var(--line);border-bottom:1px solid var(--line)"><dt style="color:var(--muted)">PHONE</dt><dd><a href="tel:+18776460167">(877) 646-0167</a></dd></div>
+        <div style="border-color:var(--line)"><dt style="color:var(--muted)">PHONE</dt><dd><a href="tel:+18776460167">(877) 646-0167</a></dd></div>
+        <div style="border-color:var(--line);border-bottom:1px solid var(--line)"><dt style="color:var(--muted)">FLOORS</dt><dd>Level 1: kitchens, baths, surfaces, cabinetry<br>Level 2: wine room, closet, smart home, fireplaces, carpet, shades</dd></div>
       </dl>
       <div class="row" style="margin-top:2rem">
         <a class="btn mag" href="https://maps.google.com?q=Southwest+Design+Studio,+LLC,+15001+Hayden+Rd+Ste+111,+Scottsdale,+AZ+85260" target="_blank" rel="noopener">Get Directions<span class="ar" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
@@ -63,13 +64,19 @@
   </div>
 </section>
 
+<section class="sec tight" aria-label="Map">
+  <div class="wrap" style="height:clamp(320px,42vw,460px)">
+    <iframe class="map-embed" title="Map to Southwest Design Studio, 15001 Hayden Rd Ste 111, Scottsdale" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Southwest+Design+Studio,+LLC,+15001+Hayden+Rd+Ste+111,+Scottsdale,+AZ+85260&amp;output=embed"></iframe>
+  </div>
+</section>
+
 <section class="sec alt" id="preview">
   <div class="wrap split" style="align-items:start">
     <div>
       <p class="label rv">Private Preview</p>
       <h2 class="rv" style="margin-top:1rem">Request a <em>private preview.</em></h2>
-      <p class="lede rv" style="margin-top:1.4rem">Tell us about your project and we will arrange a dedicated walkthrough with a designer before the public opening.</p>
-      <p class="tag rv" id="style-tag" hidden>Style finder: <b></b></p>
+      <p class="lede rv" style="margin-top:1.4rem">Tell us about your project and we will arrange a dedicated walkthrough with a designer, with the rooms and finishes you saved pulled and waiting.</p>
+      <div id="vl-wrap" hidden><p class="label" style="margin-top:2rem">Your visit list</p><div class="vl-chips" id="vl-chips"></div></div>
     </div>
     <form id="preview-form" class="form" novalidate>
       <div class="frow">

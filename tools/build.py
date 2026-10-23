@@ -10,11 +10,11 @@ ARROW = '<span class="ar" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none
 
 PAGES = {
     "home":      {"out": "index.html",           "pre": "",    "nav": "",          "title": "Southwest Design Studio | Interior Design Showroom, Scottsdale AZ",
-                  "desc": "Luxury interior design showroom in Scottsdale, AZ. Walk the rooms online, then in person. Opening soon on Hayden Road."},
+                  "desc": "A two-floor interior design showroom in Scottsdale, AZ: working kitchens, baths, stone, cabinetry, a wine room and more. Walk it online, then in person on Hayden Road."},
     "about":     {"out": "about/index.html",     "pre": "../", "nav": "about",     "title": "The Studio | Southwest Design Studio, Scottsdale AZ",
                   "desc": "The interior design showroom of Southwest Corridor, Scottsdale's design-build group. One address on Hayden Road for homeowners and the trade."},
     "portfolio": {"out": "portfolio/index.html", "pre": "../", "nav": "portfolio", "title": "Portfolio | Southwest Design Studio, Scottsdale AZ",
-                  "desc": "Warm modern rooms with desert roots. Explore the design direction of Southwest Design Studio in Scottsdale."},
+                  "desc": "Photographs and video from the Southwest Design Studio showroom floor in Scottsdale: kitchens, baths, finishes and rooms."},
     "services":  {"out": "services/index.html",  "pre": "../", "nav": "services",  "title": "Services | Southwest Design Studio, Scottsdale AZ",
                   "desc": "Full-home design, kitchens and baths, furnishing and styling for Valley homes, launching with the Scottsdale showroom."},
     "visit":     {"out": "visit/index.html",     "pre": "../", "nav": "visit",     "title": "Visit | Southwest Design Studio, Scottsdale AZ",
@@ -34,7 +34,7 @@ LAYOUT = """<!DOCTYPE html>
 <meta property="og:type" content="website">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{pre}media/showroom-poster.jpg">
+<meta property="og:image" content="{pre}media/og.jpg">
 <link rel="preload" href="{pre}fonts/bodoni-moda-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{pre}fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{pre}css/style.css">

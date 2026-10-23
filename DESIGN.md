@@ -1,6 +1,6 @@
 ---
 name: Southwest Design Studio
-read: "Luxury interior design showroom for Scottsdale homeowners and the trade. Warm editorial language, desert rooted. DEPTH 4."
+read: "Two-floor kitchen, bath and finish showroom for Scottsdale homeowners and the trade. Real footage carries the page; warm editorial type frames it. DEPTH 4."
 dials: { DESIGN_VARIANCE: 7, MOTION_INTENSITY: 7, VISUAL_DENSITY: 3, DEPTH: 4 }
 colors:
   sand: "#F4EEE4"      # page
@@ -9,8 +9,8 @@ colors:
   ink-2: "#26201A"
   ink-soft: "#4D443A"
   muted: "#6F6456"
-  clay: "#9C4F2A"      # the one accent (5.6:1 on sand)
-  clay-light: "#E0A27E" # accent on dark only
+  clay: "#85540F"      # brand amber from the logo, the one accent (5.6:1 on sand, white text 6.4:1)
+  clay-light: "#E3A64F" # amber on dark only (8.4:1 on ink)
   line: "#DCD1C0"
 typography:
   display: "Bodoni Moda, 400/500, italic for the accent word, tracking -0.02em"
@@ -24,15 +24,17 @@ motion:
   exit: "power2.in 0.35s"
   scrub: "0.8 for camera, true for text"
 depth:
-  set-piece: "Showroom Walkthrough: WebGL corridor of five rooms; scroll flies the camera through, each room sharpens on arrival"
-  fallbacks: "reduced motion / no WebGL / coarse low-end: static horizontal room rail with the same five rooms"
+  set-piece: "Showroom Walkthrough: WebGL corridor of nine stations (Level 1, the staircase, Level 2); the arriving frame plays its real tour footage, camera climbs at the stairs"
+  fallbacks: "reduced motion / no WebGL / coarse low-end: swipeable rail of the same nine stations, clips play when in view"
 ---
 
 ## Do
-- One accent (clay). Brass and gold are retired; clay reads desert, not generic luxury.
+- One accent: amber, taken from the studio's logo and the brass in its kitchens.
+- Real showroom photos and footage only. No stock rooms. Footage is iPhone HLG, graded warm (contrast 1.05, sat 1.08, 6000K at 0.5 mix).
+- Some rooms are held back on purpose (wine room, closet, smart home): blurred until press-and-hold.
 - Photography carries the page. Type is quiet, large, and sparse.
 - Every interactive piece works with keyboard and without JS (content readable at rest).
-- Keep facts to what the studio has published: address, phone, hours, opening soon, Southwest Corridor parent group.
+- Keep facts to what the studio has published or what the footage shows: address, phone, hours, two floors, brands visible on displays, Southwest Corridor parent group.
 
 ## Don't
 - No em-dashes, no invented stats, reviews, prices, or designer names.
