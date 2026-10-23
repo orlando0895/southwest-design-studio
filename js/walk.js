@@ -13,6 +13,13 @@
   var KEYS = [];
   function keys() { KEYS = [[0, 0], [0.045, 0], [0.34, HOLD], [0.45, HOLD], [0.93, LAST], [1, LAST]]; STEPS[STEPS.length - 1] = LAST; }
   var STEPS = [0, 30, HOLD, 100, 140, 175, 200, LAST];
+  // frames with no camera blur (sharpest of their neighbours, scored offline); the walk comes to rest on these
+  var SHARP = {"d":[0,2,8,20,23,34,37,44,48,51,55,68,69,78,82,97,105,113,120,129,144,153,164,176,179,184,197,200,202,221,222],"m":[0,6,14,25,34,38,44,51,54,66,69,71,86,91,97,102,105,113,120,129,133,137,146,152,155,160,163,169,176,184,188,197,200,202,208,221,222]};
+  function sharpNear(f) {
+    var best = Math.round(f), bd = 1e9;
+    (SHARP[set] || []).forEach(function (i) { if (i <= LAST && Math.abs(i - f) < bd) { bd = Math.abs(i - f); best = i; } });
+    return bd <= 8 ? best : Math.round(f);
+  }
 
   var set = null, imgs = [], ok = [], loading = 0, queue = [], gen = 0;
   function orient() { return innerHeight > innerWidth * 1.05 ? "m" : "d"; }
@@ -155,10 +162,11 @@
     if (!visible) return;
     var p = progress(), f = frameAt(p);
     if (reduce) { var best = STEPS[0]; STEPS.forEach(function (s) { if (Math.abs(s - f) < Math.abs(best - f)) best = s; }); f = best; }
+    if (!reduce && performance.now() - lastScroll > 140) f = sharpNear(f);  // at rest: settle on a clear frame
     target = f;
     bump(f);
     var nxt = reduce ? target : cur + (target - cur) * 0.35;
-    if (Math.abs(nxt - target) < 0.01) nxt = target;
+    if (Math.abs(nxt - target) < 0.02) nxt = target;
     if (nxt !== cur || dirty) {
       cur = nxt; dirty = false;
       if (draw(cur)) { if (!drawn) { drawn = true; stage.classList.add("ready"); } placePins(); }
@@ -167,7 +175,8 @@
   }
   new IntersectionObserver(function (e) { visible = e[0].isIntersecting; if (visible) dirty = true; }, { rootMargin: "100px 0px" }).observe(sec);
   addEventListener("resize", function () { resize(); });
-  addEventListener("scroll", function () { dirty = true; }, { passive: true });
+  var lastScroll = 0;
+  addEventListener("scroll", function () { dirty = true; lastScroll = performance.now(); }, { passive: true });
   resize();
   requestAnimationFrame(tick);
   window.SWDS_WALK = { firstFrame: function () { return ok[0] === 1; } };
