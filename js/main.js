@@ -340,7 +340,7 @@
       note.textContent = "Sending your request...";
       var btn = form.querySelector("button[type=submit]"); btn.disabled = true;
       var data = { name: name, phone: form.phone.value.trim(), email: email, message: form.message.value.trim(), _subject: "Private preview request - Southwest Design Studio" };
-      fetch("https://formsubmit.co/ajax/sbankosz@swcorridor.com", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
+      fetch("https://formsubmit.co/ajax/orlando0895@yahoo.com", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
         .then(function (r) { return r.json(); })
         .then(function () { note.textContent = "Thank you, " + name.split(" ")[0] + ". Your preview request is on its way. We will be in touch shortly."; form.reset(); })
         .catch(function () { note.textContent = "Something did not go through. Please call us at (877) 646-0167 instead."; })
