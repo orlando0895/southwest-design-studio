@@ -72,6 +72,7 @@
   var lenis = null;
   if (fine && !reduce && window.Lenis) {
     lenis = new Lenis({ lerp: 0.11, wheelMultiplier: 0.95 });
+    window.SWDS_LENIS = lenis;
     (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
   }
 

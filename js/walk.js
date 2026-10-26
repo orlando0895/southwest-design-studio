@@ -179,5 +179,40 @@
   addEventListener("scroll", function () { dirty = true; lastScroll = performance.now(); }, { passive: true });
   resize();
   requestAnimationFrame(tick);
+
+  // autoplay: glide the page through the walk in ~30s, then land on the next section
+  var playBtn = stage.querySelector("[data-play]"), pp = stage.querySelector(".w-pp");
+  var playing = false, playFrom = 0, playT0 = 0, playDur = 0, playEnd = 0, autoY = -1;
+  function endY() { return sec.offsetTop + sec.offsetHeight; }
+  function setY(y) { autoY = Math.round(y); if (window.SWDS_LENIS) window.SWDS_LENIS.scrollTo(y, { immediate: true, force: true }); else window.scrollTo(0, y); }
+  function play() {
+    playFrom = scrollY; playEnd = endY();
+    var total = sec.offsetHeight - innerHeight, left = Math.max(0, playEnd - playFrom);
+    if (left < 10) { playFrom = sec.offsetTop; left = playEnd - playFrom; }
+    playDur = 30000 * Math.min(1, left / Math.max(1, total + innerHeight));
+    playT0 = performance.now(); playing = true;
+    pp.hidden = false; pp.classList.remove("paused"); pp.querySelector("b").textContent = "Pause"; pp.setAttribute("aria-label", "Pause the tour");
+    requestAnimationFrame(step);
+  }
+  function stop(done) {
+    playing = false;
+    if (done) pp.hidden = true;
+    else { pp.classList.add("paused"); pp.querySelector("b").textContent = "Play"; pp.setAttribute("aria-label", "Resume the tour"); }
+  }
+  function step(t) {
+    if (!playing) return;
+    var u = Math.min(1, (t - playT0) / playDur);
+    setY(playFrom + (playEnd - playFrom) * u);
+    if (u >= 1) { stop(true); return; }
+    requestAnimationFrame(step);
+  }
+  if (playBtn && pp && !reduce) {
+    playBtn.addEventListener("click", play);
+    pp.addEventListener("click", function () { if (playing) stop(false); else play(); });
+    // any manual scroll or key takes back control
+    ["wheel", "touchstart", "keydown"].forEach(function (ev) { addEventListener(ev, function (e) { if (playing && !(ev === "keydown" && e.target === pp)) stop(false); }, { passive: true }); });
+    addEventListener("scroll", function () { if (!playing && !pp.hidden && scrollY > endY() - 4) pp.hidden = true; }, { passive: true });
+  } else if (playBtn) playBtn.hidden = true;
+
   window.SWDS_WALK = { firstFrame: function () { return ok[0] === 1; } };
 })();
