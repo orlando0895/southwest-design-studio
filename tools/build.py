@@ -79,6 +79,16 @@ LAYOUT = """<!DOCTYPE html>
 """
 WORDS = {"home": "Step inside", "about": "The Studio", "portfolio": "The floor", "services": "Services", "visit": "Hayden Road"}
 
+def ver(html, pre):
+    """Stamp css/js links with a content hash so phones fetch fresh copies after every update."""
+    import hashlib
+    def sub(m):
+        path = m.group(2); rel = path[len(pre):] if pre and path.startswith(pre) else path
+        f = ROOT / rel
+        if not f.exists(): return m.group(0)
+        return m.group(1) + path + "?v=" + hashlib.md5(f.read_bytes()).hexdigest()[:8] + m.group(3)
+    return re.sub(r'((?:href|src)=")([^"?]+\.(?:css|js))(")', sub, html)
+
 def links(pre, cur, num=False):
     out = []
     for i, (slug, label) in enumerate(NAV):
@@ -106,5 +116,6 @@ for key, p in PAGES.items():
                          nav=links(pre, p["nav"]), mnav=links(pre, p["nav"], True), fnav=links(pre, p["nav"]),
                          body=body.strip(), extra=extra)
     html = html.replace('href=""', 'href="./"')
+    html = ver(html, pre)
     out = ROOT / p["out"]; out.parent.mkdir(parents=True, exist_ok=True); out.write_text(html)
     print("built", p["out"], len(html), "bytes")
