@@ -180,6 +180,14 @@
   resize();
   requestAnimationFrame(tick);
 
+  // end of the walk: the Level 02 link jumps to the three rooms below
+  var nextLink = stage.querySelector(".w-next");
+  if (nextLink) nextLink.addEventListener("click", function (e) {
+    var t = document.getElementById("doors"); if (!t) return;
+    e.preventDefault();
+    if (window.SWDS_LENIS) window.SWDS_LENIS.scrollTo(t, { offset: -20 }); else t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+  });
+
   // autoplay: glide the page through the walk in ~30s, then land on the next section
   var playBtn = stage.querySelector("[data-play]"), pp = stage.querySelector(".w-pp");
   var playing = false, playFrom = 0, playT0 = 0, playDur = 0, playEnd = 0, autoY = -1;

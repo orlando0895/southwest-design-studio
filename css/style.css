@@ -165,7 +165,7 @@ em{font-style:italic}
 /* hold: kitchen hotspots */
 .w-hold{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;transition:opacity .45s}
 .w-hold.on{opacity:1}
-.w-hold.on .pin{pointer-events:auto}
+.w-hold.on .pin,.w-hold.on .w-card.open{pointer-events:auto}
 .w-hold-t{position:absolute;left:var(--gut);right:var(--gut);bottom:calc(1.6rem + var(--safe-b));max-width:20rem}
 .w-hold-t .num{margin-bottom:.4rem}
 .w-hold-t h2{font-size:clamp(1.7rem,6.4vw,2.6rem);text-shadow:0 4px 20px rgba(0,0,0,.5)}
@@ -310,7 +310,7 @@ em{font-style:italic}
 .sheet .s-media img,.sheet .s-media video{width:100%;height:100%;object-fit:cover}
 .sheet .s-media.held img,.sheet .s-media.held video{filter:blur(16px);transform:scale(1.1)}
 .sheet .s-media.held::after{content:"Best seen in person";position:absolute;right:.7rem;bottom:.7rem;font-size:.78rem;font-weight:600;background:rgba(14,11,9,.6);padding:.35rem .7rem;border-radius:999px}
-.sheet .s-x{position:absolute;top:.8rem;right:.8rem;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--cream2)}
+.sheet .s-x{position:absolute;z-index:3;top:.6rem;right:.6rem;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--cream);background:rgba(14,11,9,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .sheet-in{max-width:560px;margin:0 auto;position:relative}
 
 /* ---------- inner pages ---------- */
@@ -486,3 +486,25 @@ em{font-style:italic}
 .w-pp{position:absolute;z-index:6;right:var(--gut);bottom:calc(1.4rem + var(--safe-b));display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .95rem;border-radius:999px;border:1px solid rgba(241,233,220,.3);background:rgba(14,11,9,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--cream);font:600 .75rem/1 var(--sans);letter-spacing:.06em;cursor:pointer}
 .w-pp svg{width:13px;height:13px;color:var(--amber)}
 .w-pp .pl,.w-pp.paused .pz{display:none}.w-pp.paused .pl{display:inline}
+
+/* walk end: Level 02 link */
+.w-next{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.3rem;padding:.75rem 1.2rem;border-radius:999px;background:var(--cream);color:var(--ink);font-weight:600;font-size:.9rem;pointer-events:none}
+.w-arrive.on .w-next{pointer-events:auto}
+.w-next svg{width:16px;height:16px;animation:nudge 1.6s var(--ease) infinite}
+@keyframes nudge{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+/* make it yours: rooms */
+.r-tabs{display:flex;gap:.45rem;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gut) * -1);padding:0 var(--gut) .2rem}
+.r-tabs::-webkit-scrollbar{display:none}
+.r-tab{flex:0 0 auto;min-height:44px;padding:0 1.1rem;border-radius:999px;font-weight:600;font-size:.88rem;color:var(--ink2);background:#fff;box-shadow:inset 0 0 0 1px rgba(22,18,14,.14);transition:background .25s,color .25s}
+.r-tab[aria-selected="true"]{background:var(--ink);color:var(--sand);box-shadow:none}
+.sheet .btn.add svg{width:18px;height:18px;opacity:0;transition:opacity .2s}
+.sheet .btn.add[aria-pressed="true"]{--b:var(--cream);--f:var(--ink)}
+.sheet .btn.add[aria-pressed="true"] svg{opacity:1}
+.sheet .s-media img[src*="materials"]{object-fit:cover}
+@media (min-width:1024px){
+  .y-grid>.y-step:first-child{grid-column:1/-1}
+  .y-grid>.y-step+.y-step{margin-top:0}
+  .y-grid.no-k>.y-step:last-child{grid-column:1/-1}
+  .y-grid.no-k .sw-grid{grid-template-columns:repeat(6,1fr)}
+  .r-tabs{margin:0;padding:0;flex-wrap:wrap}
+}

@@ -167,7 +167,11 @@
   function bindSaves(scope) {
     $$("[data-save]", scope).forEach(function (b) {
       if (b._sv) return; b._sv = 1;
-      var paint = function () { b.setAttribute("aria-pressed", VL.has(b.getAttribute("data-save")) ? "true" : "false"); };
+      var paint = function () {
+        var on = VL.has(b.getAttribute("data-save"));
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+        if (b.hasAttribute("data-on")) { var t = $(".t", b) || b; t.textContent = b.getAttribute(on ? "data-on" : "data-off"); }
+      };
       b.addEventListener("click", function () { VL.toggle(b.getAttribute("data-save"), b.getAttribute("data-label")); });
       d.addEventListener("vl:change", paint); paint();
     });
@@ -175,18 +179,25 @@
   VL.load(); VL.paint(); bindSaves(d);
   window.SWDS_VL = VL;
 
-  /* ---- doors: press and hold to peek ---- */
-  $$(".door").forEach(function (door) {
-    var btn = $(".hold", door), media = $(".door-media", door), v = $("video", door), t = null, on = false;
-    var start = function (e) { if (e && e.type === "pointerdown" && e.button) return; clearTimeout(t); if (!on) { on = true; door.classList.add("peek"); btn.textContent = "Peeking..."; play(v); } };
-    var stop = function () { clearTimeout(t); t = setTimeout(function () { on = false; door.classList.remove("peek"); btn.textContent = "Hold to peek"; }, 700); };
-    [btn, media].forEach(function (el) {
-      el.addEventListener("pointerdown", start);
-      el.addEventListener("pointerup", stop); el.addEventListener("pointerleave", stop); el.addEventListener("pointercancel", stop);
-      el.addEventListener("contextmenu", function (e) { e.preventDefault(); });
-    });
-    btn.addEventListener("keydown", function (e) { if ((e.key === " " || e.key === "Enter") && !e.repeat) { e.preventDefault(); start(); } });
-    btn.addEventListener("keyup", function (e) { if (e.key === " " || e.key === "Enter") stop(); });
+  /* ---- doors: tap to peek, tap again to close; one open at a time ---- */
+  var doors = $$(".door");
+  function shut(door) {
+    if (!door.classList.contains("peek")) return;
+    door.classList.remove("peek");
+    var btn = $(".hold", door), v = $("video", door);
+    btn.textContent = "Peek inside"; btn.setAttribute("aria-expanded", "false");
+    if (v) v.pause();
+  }
+  doors.forEach(function (door) {
+    var btn = $(".hold", door), media = $(".door-media", door), v = $("video", door);
+    var toggle = function () {
+      if (door.classList.contains("peek")) { shut(door); return; }
+      doors.forEach(function (o) { if (o !== door) shut(o); });
+      door.classList.add("peek"); btn.textContent = "Close"; btn.setAttribute("aria-expanded", "true");
+      if (v) play(v);
+    };
+    btn.addEventListener("click", toggle);
+    media.addEventListener("click", toggle);
   });
 
   /* ---- stories ---- */
@@ -244,6 +255,46 @@
     });
     d.addEventListener("vl:change", paint); paint();
   });
+
+  /* ---- make it yours: pick a room, then its finishes; tap a finish to see it up close ---- */
+  var roomsEl = $("#rooms"), grid = $("#sw-grid");
+  if (roomsEl && grid) {
+    var ROOMS = JSON.parse(roomsEl.textContent), tabs = $$(".r-tab"), kstep = $(".y-kitchen"), flab = $(".y-flab"), curRoom = "kitchen";
+    var CHECK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
+    var fid = function (room, k) { return "finish:" + room + ":" + k; };
+    var flabel = function (room, label) { return label + " (" + ROOMS[room].t + ")"; };
+    var paintGrid = function () { $$(".sw", grid).forEach(function (b) { b.setAttribute("aria-pressed", VL.has(b.getAttribute("data-id")) ? "true" : "false"); }); };
+    var openFinish = function (room, it) {
+      var id = fid(room, it[0]);
+      openSheet('<div class="s-media"><img src="' + BASE + 'img/materials/' + esc(it[0]) + '.webp" alt="' + esc(it[1]) + '"></div><p class="num">' + esc(ROOMS[room].t) + '</p><h3 style="margin-top:.5rem">' + esc(it[1]) + '</h3><p class="s-sub">' + esc(it[2]) + ' Ask to see it on the showroom floor.</p>' +
+        '<button class="btn add" type="button" data-save="' + esc(id) + '" data-label="' + esc(flabel(room, it[1])) + '" data-on="Saved to your visit. Tap to remove" data-off="Add to my visit"><span class="t">Add to my visit</span>' + CHECK + '</button>', it[1]);
+    };
+    var render = function (room) {
+      curRoom = room;
+      tabs.forEach(function (t) { var on = t.getAttribute("data-room") === room; t.setAttribute("aria-selected", on ? "true" : "false"); t.tabIndex = on ? 0 : -1; });
+      if (kstep) kstep.hidden = room !== "kitchen";
+      d.querySelector(".y-grid").classList.toggle("no-k", room !== "kitchen");
+      if (flab) flab.textContent = (room === "kitchen" ? "3" : "2") + " \u00b7 " + (room === "kitchen" ? "FINISHES & APPLIANCES" : "FINISHES");
+      grid.innerHTML = "";
+      ROOMS[room].items.forEach(function (it) {
+        var b = d.createElement("button");
+        b.className = "sw"; b.type = "button"; b.setAttribute("data-id", fid(room, it[0])); b.setAttribute("aria-label", it[1] + ", see it up close");
+        b.innerHTML = '<img src="' + BASE + 'img/materials/' + esc(it[0]) + '.webp" alt="" loading="lazy"><b>' + esc(it[1]) + '</b>';
+        b.addEventListener("click", function () { openFinish(room, it); });
+        grid.appendChild(b);
+      });
+      paintGrid();
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { render(t.getAttribute("data-room")); });
+      t.addEventListener("keydown", function (e) {
+        var n = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (!n) return;
+        var nx = tabs[(i + n + tabs.length) % tabs.length]; nx.focus(); render(nx.getAttribute("data-room"));
+      });
+    });
+    d.addEventListener("vl:change", paintGrid);
+    render("kitchen");
+  }
 
   /* ---- about: film ---- */
   var film = $(".film");

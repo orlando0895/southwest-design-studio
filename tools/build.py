@@ -18,7 +18,7 @@ PAGES = {
     "services":  {"out": "services/index.html",  "pre": "../", "nav": "services",  "title": "Services | Southwest Design Studio, Scottsdale AZ",
                   "desc": "Full-home design, kitchens and baths, furnishing and styling for Valley homes, launching with the Scottsdale showroom."},
     "visit":     {"out": "visit/index.html",     "pre": "../", "nav": "visit",     "title": "Visit | Southwest Design Studio, Scottsdale AZ",
-                  "desc": "Visit Southwest Design Studio at 15001 Hayden Rd Ste 111, Scottsdale, AZ 85260. Request a private preview with a designer."},
+                  "desc": "Visit Southwest Design Studio at 15001 N Hayden Rd Ste 111, Scottsdale, AZ 85260. Request a private preview with a designer."},
 }
 NAV = [("", "Home"), ("about", "The Studio"), ("portfolio", "Portfolio"), ("services", "Services"), ("visit", "Visit")]
 
@@ -41,7 +41,7 @@ LAYOUT = """<!DOCTYPE html>
 <link rel="stylesheet" href="{pre}css/style.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E0B09'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23E3A64F'/%3E%3Crect x='17' y='7' width='8' height='8' fill='%23F1E9DC'/%3E%3Crect x='7' y='17' width='8' height='8' fill='%23F1E9DC'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%23E3A64F'/%3E%3C/svg%3E">
 <script>document.documentElement.classList.add("js");try{{if(sessionStorage.getItem("swds-tr"))document.documentElement.classList.add("tr-in")}}catch(e){{}}</script>
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Southwest Design Studio","description":"Interior design showroom","telephone":"+1-877-646-0167","address":{{"@type":"PostalAddress","streetAddress":"15001 Hayden Rd Ste 111","addressLocality":"Scottsdale","addressRegion":"AZ","postalCode":"85260","addressCountry":"US"}},"openingHours":"Mo-Fr 09:00-17:00","parentOrganization":{{"@type":"Organization","name":"Southwest Corridor"}}}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Southwest Design Studio","description":"Interior design showroom","telephone":"+1-877-646-0167","address":{{"@type":"PostalAddress","streetAddress":"15001 N Hayden Rd Ste 111","addressLocality":"Scottsdale","addressRegion":"AZ","postalCode":"85260","addressCountry":"US"}},"openingHours":"Mo-Fr 09:00-17:00","parentOrganization":{{"@type":"Organization","name":"Southwest Corridor"}}}}</script>
 </head>
 <body class="pg-{key}">
 <a class="skip" href="#main">Skip to content</a>
@@ -56,7 +56,7 @@ LAYOUT = """<!DOCTYPE html>
 </header>
 <div class="menu-ov" id="menu" aria-label="Menu">
   <nav aria-label="Mobile">{mnav}</nav>
-  <div class="mfoot"><span>15001 Hayden Rd Ste 111, Scottsdale</span><a href="tel:+18776460167">(877) 646-0167</a><span>Mon to Fri, 9 AM to 5 PM</span></div>
+  <div class="mfoot"><span>15001 N Hayden Rd Ste 111, Scottsdale</span><a href="tel:+18776460167">(877) 646-0167</a><span>Mon to Fri, 9 AM to 5 PM</span></div>
 </div>
 <main id="main">
 {body}
@@ -65,7 +65,7 @@ LAYOUT = """<!DOCTYPE html>
   <div class="wrap">
     <div class="ft-grid">
       <div><a class="brand" href="{pre}">Southwest <i>Design Studio</i></a><p style="margin-top:.6rem;max-width:22rem">An interior design showroom in Scottsdale, Arizona. Part of the Southwest Corridor group.</p></div>
-      <div><p>15001 Hayden Rd Ste 111<br>Scottsdale, AZ 85260</p><p style="margin-top:.5rem"><a href="tel:+18776460167">(877) 646-0167</a> &middot; Mon to Fri, 9 to 5</p></div>
+      <div><p>15001 N Hayden Rd Ste 111<br>Scottsdale, AZ 85260</p><p style="margin-top:.5rem"><a href="tel:+18776460167">(877) 646-0167</a> &middot; Mon to Fri, 9 to 5</p></div>
       <nav aria-label="Footer">{fnav}</nav>
     </div>
     <p class="ft-base">&copy; 2026 Southwest Design Studio, LLC. All rights reserved.</p>
