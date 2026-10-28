@@ -188,13 +188,24 @@
     btn.textContent = "Peek inside"; btn.setAttribute("aria-expanded", "false");
     if (v) v.pause();
   }
+  // wide doors (desktop) get the landscape cut, tall doors (phones) the portrait cut
+  var fitDoor = function (door) {
+    var v = $("video", door); if (!v || !v.dataset.srcL) return;
+    var wide = door.clientWidth > door.clientHeight;
+    if (!v._p) { v._p = v.getAttribute("poster"); v._s = v.dataset.src; }
+    var want = wide ? v.dataset.srcL : v._s, pos = wide ? v.dataset.posterL : v._p;
+    if (v.getAttribute("poster") !== pos) v.setAttribute("poster", pos);
+    if (v.dataset.src !== want) { v.dataset.src = want; if (v.getAttribute("src")) { v.removeAttribute("src"); v.load(); } }
+  };
+  doors.forEach(fitDoor);
+  addEventListener("resize", function () { doors.forEach(fitDoor); });
   doors.forEach(function (door) {
     var btn = $(".hold", door), media = $(".door-media", door), v = $("video", door);
     var toggle = function () {
       if (door.classList.contains("peek")) { shut(door); return; }
       doors.forEach(function (o) { if (o !== door) shut(o); });
       door.classList.add("peek"); btn.textContent = "Close"; btn.setAttribute("aria-expanded", "true");
-      if (v) play(v);
+      fitDoor(door); if (v) play(v);
     };
     btn.addEventListener("click", toggle);
     media.addEventListener("click", toggle);

@@ -512,3 +512,6 @@ em{font-style:italic}
 .sheet .s-x svg{width:18px;height:18px}
 .sheet .s-x:focus{outline:none}
 .sheet .s-x:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+
+/* door caption sits above the title, never on it */
+.door-ring{inset:0 0 auto 0;height:58%}
