@@ -508,3 +508,7 @@ em{font-style:italic}
   .y-grid.no-k .sw-grid{grid-template-columns:repeat(6,1fr)}
   .r-tabs{margin:0;padding:0;flex-wrap:wrap}
 }
+
+.sheet .s-x svg{width:18px;height:18px}
+.sheet .s-x:focus{outline:none}
+.sheet .s-x:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
