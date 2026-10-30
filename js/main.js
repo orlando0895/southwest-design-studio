@@ -270,14 +270,14 @@
   /* ---- make it yours: pick a room, then its finishes; tap a finish to see it up close ---- */
   var roomsEl = $("#rooms"), grid = $("#sw-grid");
   if (roomsEl && grid) {
-    var ROOMS = JSON.parse(roomsEl.textContent), tabs = $$(".r-tab"), kstep = $(".y-kitchen"), flab = $(".y-flab"), curRoom = "kitchen";
+    var TV = roomsEl.getAttribute("data-v") || "", ROOMS = JSON.parse(roomsEl.textContent), tabs = $$(".r-tab"), kstep = $(".y-kitchen"), flab = $(".y-flab"), curRoom = "kitchen";
     var CHECK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
     var fid = function (room, k) { return "finish:" + room + ":" + k; };
     var flabel = function (room, label) { return label + " (" + ROOMS[room].t + ")"; };
     var paintGrid = function () { $$(".sw", grid).forEach(function (b) { b.setAttribute("aria-pressed", VL.has(b.getAttribute("data-id")) ? "true" : "false"); }); };
     var openFinish = function (room, it) {
       var id = fid(room, it[0]);
-      openSheet('<div class="s-media"><img src="' + BASE + 'img/materials/' + esc(it[0]) + '.webp" alt="' + esc(it[1]) + '"></div><p class="num">' + esc(ROOMS[room].t) + '</p><h3 style="margin-top:.5rem">' + esc(it[1]) + '</h3><p class="s-sub">' + esc(it[2]) + ' Ask to see it on the showroom floor.</p>' +
+      openSheet('<div class="s-media"><img src="' + BASE + 'img/materials/' + esc(it[0]) + '.webp?v=' + TV + '" alt="' + esc(it[1]) + '"></div><p class="num">' + esc(ROOMS[room].t) + '</p><h3 style="margin-top:.5rem">' + esc(it[1]) + '</h3><p class="s-sub">' + esc(it[2]) + ' Ask to see it on the showroom floor.</p>' +
         '<button class="btn add" type="button" data-save="' + esc(id) + '" data-label="' + esc(flabel(room, it[1])) + '" data-on="Saved to your visit. Tap to remove" data-off="Add to my visit"><span class="t">Add to my visit</span>' + CHECK + '</button>', it[1]);
     };
     var render = function (room) {
@@ -290,7 +290,7 @@
       ROOMS[room].items.forEach(function (it) {
         var b = d.createElement("button");
         b.className = "sw"; b.type = "button"; b.setAttribute("data-id", fid(room, it[0])); b.setAttribute("aria-label", it[1] + ", see it up close");
-        b.innerHTML = '<img src="' + BASE + 'img/materials/' + esc(it[0]) + '.webp" alt="" loading="lazy"><b>' + esc(it[1]) + '</b>';
+        b.innerHTML = '<img src="' + BASE + 'img/materials/' + esc(it[0]) + '.webp?v=' + TV + '" alt="" loading="lazy"><b>' + esc(it[1]) + '</b>';
         b.addEventListener("click", function () { openFinish(room, it); });
         grid.appendChild(b);
       });
@@ -383,7 +383,7 @@
   var form = d.getElementById("preview-form");
   if (form) {
     var note = d.getElementById("form-note");
-    var legacy = { "black-brass": "Black & Brass kitchen", "bright-marble": "Bright Marble kitchen", "warm-charcoal": "Warm Charcoal kitchen" };
+    var legacy = { "black-brass": "Black & Brass kitchen", "bright-marble": "Bright Marble kitchen" };
     var stp = new URLSearchParams(location.search).get("style");
     if (stp && legacy[stp]) VL.add("kitchen:" + stp, legacy[stp]);
     var chips = d.getElementById("vl-chips"), wrap = d.getElementById("vl-wrap");

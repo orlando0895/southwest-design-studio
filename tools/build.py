@@ -117,5 +117,8 @@ for key, p in PAGES.items():
                          body=body.strip(), extra=extra)
     html = html.replace('href=""', 'href="./"')
     html = ver(html, pre)
+    import hashlib  # materials_ver: version tile images so phones refetch replaced crops
+    mv = hashlib.md5(b"".join(f.read_bytes() for f in sorted((ROOT / "img/materials").glob("*.webp")))).hexdigest()[:8]
+    html = html.replace('id="rooms">', f'id="rooms" data-v="{mv}">')
     out = ROOT / p["out"]; out.parent.mkdir(parents=True, exist_ok=True); out.write_text(html)
     print("built", p["out"], len(html), "bytes")
