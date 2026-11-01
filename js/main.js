@@ -98,6 +98,14 @@
     (function loop() { cx += (tx - cx) * 0.25; cy += (ty - cy) * 0.25; cur.style.transform = "translate3d(" + cx + "px," + cy + "px,0)"; requestAnimationFrame(loop); })();
   }
 
+  /* ---- videos never show a broken placeholder: poster sits behind, video fades in once it has frames ---- */
+  $$("video[poster]").forEach(function (v) {
+    var p = v.parentElement; if (p && !p.style.backgroundImage) { p.style.backgroundImage = "url(" + v.getAttribute("poster") + ")"; p.style.backgroundSize = "cover"; p.style.backgroundPosition = "center"; }
+    v.classList.add("vwait");
+    var ok = function () { v.classList.remove("vwait"); };
+    v.addEventListener("loadeddata", ok); v.addEventListener("playing", ok);
+  });
+
   /* ---- lazy ambient video: load near view, play only while visible ---- */
   var lvs = $$("video.lv");
   if (lvs.length && "IntersectionObserver" in window) {
@@ -403,6 +411,8 @@
       note.textContent = "Sending your request...";
       var btn = form.querySelector("button[type=submit]"); btn.disabled = true;
       var data = { name: name, phone: form.phone.value.trim(), email: email, message: form.message.value.trim(), _subject: "Private preview request - Southwest Design Studio" };
+      // the saved list always travels as its own field, whatever the visitor typed
+      data["Visit list"] = VL.items.length ? VL.items.map(function (x) { return x.label; }).join("; ") : "Nothing saved";
       fetch("https://formsubmit.co/ajax/orlando0895@yahoo.com", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
         .then(function (r) { return r.json(); })
         .then(function () { note.textContent = "Thank you, " + name.split(" ")[0] + ". Your preview request is on its way. We will be in touch shortly."; form.reset(); })

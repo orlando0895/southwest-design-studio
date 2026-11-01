@@ -515,3 +515,6 @@ em{font-style:italic}
 
 /* door caption sits above the title, never on it */
 .door-ring{inset:0 0 auto 0;height:58%}
+
+video.vwait{opacity:0}
+video{transition:opacity .35s}

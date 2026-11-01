@@ -5,6 +5,9 @@ data-hf="path" on media becomes data-src only when that Higgsfield file exists.
 """
 import pathlib, re
 
+# Launch switch: set LAUNCH = True once the custom domain is connected.
+SITE = "https://orlando0895.github.io/southwest-design-studio"
+LAUNCH = False
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>'
 
@@ -27,14 +30,16 @@ LAYOUT = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
+{robots}
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#0E0B09">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{pre}media/og.jpg">
+<meta property="og:image" content="{site}/media/og.jpg">
+<meta property="og:url" content="{site}/{outurl}">
+<link rel="canonical" href="{site}/{outurl}">
 <link rel="preload" href="{pre}fonts/bodoni-moda-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{pre}fonts/bodoni-moda-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{pre}fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -112,7 +117,7 @@ for key, p in PAGES.items():
     body = body.replace("{pre}", pre).replace("{arrow}", ARROW)
     body = hf(body, pre)
     extra = f'<script src="{pre}js/walk.js" defer></script>' if key == "home" else ""
-    html = LAYOUT.format(title=p["title"], desc=p["desc"], pre=pre, arrow=ARROW, key=key, word=WORDS[key],
+    html = LAYOUT.format(robots=("" if LAUNCH else '<meta name="robots" content="noindex, nofollow">'), site=SITE, outurl=("" if key == "home" else p["out"].replace("index.html","")),title=p["title"], desc=p["desc"], pre=pre, arrow=ARROW, key=key, word=WORDS[key],
                          nav=links(pre, p["nav"]), mnav=links(pre, p["nav"], True), fnav=links(pre, p["nav"]),
                          body=body.strip(), extra=extra)
     html = html.replace('href=""', 'href="./"')
@@ -122,3 +127,7 @@ for key, p in PAGES.items():
     html = html.replace('id="rooms">', f'id="rooms" data-v="{mv}">')
     out = ROOT / p["out"]; out.parent.mkdir(parents=True, exist_ok=True); out.write_text(html)
     print("built", p["out"], len(html), "bytes")
+
+(ROOT / "robots.txt").write_text("User-agent: *\nAllow: /\n" + (("Sitemap: " + SITE + "/sitemap.xml\n") if LAUNCH else ""))
+urls = "".join(f"<url><loc>{SITE}/{'' if k == 'home' else v['out'].replace('index.html','')}</loc></url>" for k, v in PAGES.items())
+(ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
