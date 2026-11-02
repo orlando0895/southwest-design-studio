@@ -19,7 +19,7 @@ PAGES = {
     "portfolio": {"out": "portfolio/index.html", "pre": "../", "nav": "portfolio", "title": "Portfolio | Southwest Design Studio, Scottsdale AZ",
                   "desc": "Photographs and video from the Southwest Design Studio showroom floor in Scottsdale: kitchens, baths, finishes and rooms."},
     "services":  {"out": "services/index.html",  "pre": "../", "nav": "services",  "title": "Services | Southwest Design Studio, Scottsdale AZ",
-                  "desc": "Full-home design, kitchens and baths, furnishing and styling for Valley homes, launching with the Scottsdale showroom."},
+                  "desc": "Full-home design, kitchens and baths, furnishing and styling for Valley homes, starting on the Scottsdale showroom floor."},
     "visit":     {"out": "visit/index.html",     "pre": "../", "nav": "visit",     "title": "Visit | Southwest Design Studio, Scottsdale AZ",
                   "desc": "Visit Southwest Design Studio at 15001 N Hayden Rd Ste 111, Scottsdale, AZ 85260. Request a private preview with a designer."},
 }
