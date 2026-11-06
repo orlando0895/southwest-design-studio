@@ -12,15 +12,15 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>'
 
 PAGES = {
-    "home":      {"out": "index.html",           "pre": "",    "nav": "",          "title": "Southwest Design Studio | Interior Design Showroom, Scottsdale AZ",
-                  "desc": "Walk through a two-floor interior design showroom in Scottsdale, AZ: working kitchens, baths, stone, cabinetry, a wine room and more on Hayden Road."},
-    "about":     {"out": "about/index.html",     "pre": "../", "nav": "about",     "title": "The Studio | Southwest Design Studio, Scottsdale AZ",
-                  "desc": "The interior design showroom of Southwest Corridor, Scottsdale's design-build group. One address on Hayden Road for homeowners and the trade."},
-    "portfolio": {"out": "portfolio/index.html", "pre": "../", "nav": "portfolio", "title": "Portfolio | Southwest Design Studio, Scottsdale AZ",
-                  "desc": "Photographs and video from the Southwest Design Studio showroom floor in Scottsdale: kitchens, baths, finishes and rooms."},
-    "services":  {"out": "services/index.html",  "pre": "../", "nav": "services",  "title": "Services | Southwest Design Studio, Scottsdale AZ",
+    "home":      {"out": "index.html",           "pre": "",    "nav": "",          "title": "Southwest Design Studio | Luxury Interior Design Showroom, Greater Phoenix",
+                  "desc": "Walk through a two-floor luxury interior design showroom on Hayden Road: working kitchens, baths, stone, cabinetry and a wine room, for homes in Paradise Valley, North Scottsdale, Arcadia, Fountain Hills, Carefree and the East Valley."},
+    "about":     {"out": "about/index.html",     "pre": "../", "nav": "about",     "title": "The Studio | Southwest Design Studio",
+                  "desc": "The interior design showroom of Southwest Corridor, the Valley's design-build group. One address on Hayden Road for homeowners and the trade."},
+    "portfolio": {"out": "portfolio/index.html", "pre": "../", "nav": "portfolio", "title": "Portfolio | Southwest Design Studio",
+                  "desc": "Photographs and video from the Southwest Design Studio showroom floor: kitchens, baths, finishes and rooms."},
+    "services":  {"out": "services/index.html",  "pre": "../", "nav": "services",  "title": "Services | Southwest Design Studio",
                   "desc": "Full-home design, kitchens and baths, furnishing and styling for Valley homes, starting on the Scottsdale showroom floor."},
-    "visit":     {"out": "visit/index.html",     "pre": "../", "nav": "visit",     "title": "Visit | Southwest Design Studio, Scottsdale AZ",
+    "visit":     {"out": "visit/index.html",     "pre": "../", "nav": "visit",     "title": "Visit | Southwest Design Studio",
                   "desc": "Visit Southwest Design Studio at 15001 N Hayden Rd Ste 111, Scottsdale, AZ 85260. Request a private preview with a designer."},
 }
 NAV = [("", "Home"), ("about", "The Studio"), ("portfolio", "Portfolio"), ("services", "Services"), ("visit", "Visit")]
@@ -33,7 +33,7 @@ LAYOUT = """<!DOCTYPE html>
 {robots}
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="theme-color" content="#0E0B09">
+<meta name="theme-color" content="#0A0A0A">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
@@ -44,15 +44,16 @@ LAYOUT = """<!DOCTYPE html>
 <link rel="preload" href="{pre}fonts/bodoni-moda-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{pre}fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{pre}css/style.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E0B09'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23E3A64F'/%3E%3Crect x='17' y='7' width='8' height='8' fill='%23F1E9DC'/%3E%3Crect x='7' y='17' width='8' height='8' fill='%23F1E9DC'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%23E3A64F'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="{pre}img/brand/favicon.png">
+<link rel="apple-touch-icon" href="{pre}img/brand/mark-180.png">
 <script>document.documentElement.classList.add("js");try{{if(sessionStorage.getItem("swds-tr"))document.documentElement.classList.add("tr-in")}}catch(e){{}}</script>
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Southwest Design Studio","description":"Interior design showroom","telephone":"+1-877-646-0167","address":{{"@type":"PostalAddress","streetAddress":"15001 N Hayden Rd Ste 111","addressLocality":"Scottsdale","addressRegion":"AZ","postalCode":"85260","addressCountry":"US"}},"openingHours":"Mo-Fr 09:00-17:00","parentOrganization":{{"@type":"Organization","name":"Southwest Corridor"}}}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Southwest Design Studio","description":"Interior design showroom","telephone":"+1-877-646-0167","address":{{"@type":"PostalAddress","streetAddress":"15001 N Hayden Rd Ste 111","addressLocality":"Scottsdale","addressRegion":"AZ","postalCode":"85260","addressCountry":"US"}},"openingHours":"Mo-Fr 09:00-17:00","areaServed":["Paradise Valley","Scottsdale","Phoenix","Fountain Hills","Carefree","Cave Creek","Mesa","Chandler","Gilbert"],"logo":"{site}/img/brand/logo.png","parentOrganization":{{"@type":"Organization","name":"Southwest Corridor"}}}}</script>
 </head>
 <body class="pg-{key}">
 <a class="skip" href="#main">Skip to content</a>
 <div class="tiles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span class="tl-word">{word}</span></div>
 <header class="hd">
-  <a class="brand" href="{pre}" aria-label="Southwest Design Studio, home">Southwest <i>Design Studio</i></a>
+  <a class="brand" href="{pre}" aria-label="Southwest Design Studio, home"><img src="{pre}img/brand/logo-sm.png" alt="Southwest Design Studio, LLC" width="562" height="165"></a>
   <nav class="nav" aria-label="Primary">{nav}</nav>
   <div class="hd-r">
     <a class="btn" href="{pre}visit/">Plan Your Visit{arrow}</a>
@@ -69,7 +70,7 @@ LAYOUT = """<!DOCTYPE html>
 <footer class="ft">
   <div class="wrap">
     <div class="ft-grid">
-      <div><a class="brand" href="{pre}">Southwest <i>Design Studio</i></a><p style="margin-top:.6rem;max-width:22rem">An interior design showroom in Scottsdale, Arizona. Part of the Southwest Corridor group.</p></div>
+      <div><a class="brand" href="{pre}" aria-label="Southwest Design Studio, home"><img src="{pre}img/brand/logo-sm.png" alt="Southwest Design Studio, LLC" width="562" height="165" loading="lazy"></a><p style="margin-top:.6rem;max-width:22rem">A luxury interior design showroom serving Paradise Valley, North Scottsdale, Arcadia, Fountain Hills, Carefree and the East Valley. Part of the Southwest Corridor group.</p></div>
       <div><p>15001 N Hayden Rd Ste 111<br>Scottsdale, AZ 85260</p><p style="margin-top:.5rem"><a href="tel:+18776460167">(877) 646-0167</a> &middot; Mon to Fri, 9 to 5</p></div>
       <nav aria-label="Footer">{fnav}</nav>
     </div>

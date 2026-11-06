@@ -1,5 +1,5 @@
 /* Southwest Design Studio · showroom site v3
-   Dark-first so the footage glows. One accent: amber from the logo. Bodoni Moda + Manrope.
+   Dark-first so the footage glows. Brand: black, white and the logo's orange gradient (#FCAF1D to #E05403). Bodoni Moda + Manrope.
    Signature motif: the logo's tile mosaic (loader, page transitions, crafts grid).
    Mobile-first; every breakpoint below widens, never squeezes. */
 
@@ -11,10 +11,10 @@
 @font-face{font-family:"Manrope";font-style:normal;font-weight:600;font-display:swap;src:url(../fonts/manrope-latin-600-normal.woff2) format("woff2")}
 
 :root{
-  --bg:#0E0B09; --bg2:#15110E; --bg3:#1E1915; --cream:#F1E9DC; --cream2:#C2B6A4; --muted:#968A78;
-  --line:rgba(241,233,220,.12); --line2:rgba(241,233,220,.22);
-  --amber:#E3A64F; --amber2:#F0BD72;
-  --sand:#EFE7DA; --sand2:#E5DBCB; --ink:#16120E; --ink2:#4A4136; --ink-muted:#6B6052; --amber-deep:#85540F;
+  --bg:#0A0A0A; --bg2:#121212; --bg3:#1B1B1B; --cream:#F5F3EF; --cream2:#C4C0B9; --muted:#97928A;
+  --line:rgba(245,243,239,.12); --line2:rgba(245,243,239,.22);
+  --amber:#EE8310; --amber2:#FCAF1D; --amber3:#E05403; --grad:linear-gradient(90deg,#FCAF1D,#EE8310 55%,#E05403);
+  --sand:#F3F1ED; --sand2:#E6E3DD; --ink:#111111; --ink2:#3F3D3A; --ink-muted:#66625C; --amber-deep:#A84302;
   --gut:clamp(1.15rem,4.5vw,3.25rem); --max:1360px; --r:6px;
   --serif:"Bodoni Moda",Georgia,"Times New Roman",serif;
   --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -392,7 +392,7 @@ em{font-style:italic}
 .iso.l1 .plate.p2{opacity:.18;transform:translateZ(190px)}
 .iso.l2 .plate.p1{opacity:.22}
 .plate .zn{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);border-radius:3px;background:rgba(241,233,220,.12);box-shadow:inset 0 0 0 1px rgba(241,233,220,.38);transition:background .3s}
-.plate .zn.held{background:repeating-linear-gradient(45deg,rgba(227,166,79,.35) 0 6px,rgba(227,166,79,.08) 6px 12px)}
+.plate .zn.held{background:repeating-linear-gradient(45deg,rgba(238,131,16,.35) 0 6px,rgba(238,131,16,.08) 6px 12px)}
 .plate .zn.on{background:var(--amber)}
 .iso-lab{position:absolute;font-family:var(--serif);font-size:clamp(1.1rem,3.6vw,1.5rem);color:var(--cream2);transition:color .4s,opacity .4s}
 .iso-lab small{display:block;font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.14em;color:var(--muted)}
@@ -416,7 +416,7 @@ em{font-style:italic}
 .frow{display:grid;gap:1.1rem}
 .form label{display:grid;gap:.45rem;font-weight:600;font-size:.88rem;color:var(--cream2)}
 .form input,.form textarea{font:inherit;font-size:16px;font-weight:400;padding:.95rem 1rem;border:1px solid var(--line2);border-radius:var(--r);background:var(--bg2);color:var(--cream);width:100%;transition:border-color .3s,box-shadow .3s}
-.form input:focus,.form textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(227,166,79,.2)}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(238,131,16,.2)}
 .form .btn{justify-self:start}
 .form-note{min-height:1.5rem;font-size:.95rem;color:var(--amber);font-weight:500}
 .chipset{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
@@ -482,7 +482,7 @@ em{font-style:italic}
 .w-cues .w-cue{margin-top:0}
 .w-play{pointer-events:auto;display:inline-flex;align-items:center;gap:.6rem;padding:.7rem 1.15rem .7rem .95rem;border-radius:999px;border:1px solid rgba(241,233,220,.35);background:rgba(14,11,9,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--cream);font:600 .82rem/1 var(--sans);letter-spacing:.06em;cursor:pointer;transition:background .3s,border-color .3s}
 .w-play svg{width:14px;height:14px;color:var(--amber)}
-.w-play:hover{background:rgba(227,166,79,.18);border-color:var(--amber)}
+.w-play:hover{background:rgba(238,131,16,.18);border-color:var(--amber)}
 .w-pp{position:absolute;z-index:6;right:var(--gut);bottom:calc(1.4rem + var(--safe-b));display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .95rem;border-radius:999px;border:1px solid rgba(241,233,220,.3);background:rgba(14,11,9,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--cream);font:600 .75rem/1 var(--sans);letter-spacing:.06em;cursor:pointer}
 .w-pp svg{width:13px;height:13px;color:var(--amber)}
 .w-pp .pl,.w-pp.paused .pz{display:none}.w-pp.paused .pl{display:inline}
@@ -518,3 +518,36 @@ em{font-style:italic}
 
 video.vwait{opacity:0}
 video{transition:opacity .35s}
+
+/* brand: logo lockup + orange gradient */
+.brand{display:inline-flex;align-items:center}
+.brand img{height:40px;width:auto}
+.ft .brand img{height:56px}
+.btn{background:var(--grad);color:#111}
+.btn:hover{filter:brightness(1.06)}
+.btn.ghost,.light .btn,.sheet .btn.add[aria-pressed="true"]{background:var(--b)}
+.light .btn,.btn.ghost{color:var(--f)}
+.num::after,.eyebrow::after{background:var(--grad)}
+@media (min-width:1024px){.brand img{height:46px}}
+
+/* Studio page: the Southwest Corridor family, one logo card per company */
+.corp{list-style:none;display:grid;grid-template-columns:1fr;gap:.8rem;margin-top:2.4rem}
+@media (min-width:640px){.corp{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.corp{grid-template-columns:repeat(4,1fr)}}
+.corp a,.corp span.c{display:flex;flex-direction:column;justify-content:space-between;gap:.9rem;height:100%;padding:1.1rem 1.1rem .95rem;border-radius:10px;background:#fff;color:#111;text-decoration:none;position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.corp a::before,.corp span.c::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.corp a:hover,.corp a:focus-visible{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(238,131,16,.55)}
+.corp a:hover::before,.corp a:focus-visible::before{transform:none}
+.corp img{width:100%;height:84px;object-fit:contain;object-position:left center}
+.corp small{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#66625C}
+.corp a small b{color:#A84302;font-weight:600}
+.corp span.c{opacity:.75}
+
+.areas{margin-top:2rem}
+.areas ul{list-style:none;margin-top:.8rem;display:grid;gap:.75rem}
+.areas li{display:grid;gap:.15rem;padding-left:.9rem;border-left:2px solid var(--amber)}
+.areas b{font-weight:600}
+.areas span{color:var(--cream2);font-size:.92rem}
+.corp small{gap:.6rem}
+.corp small span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.corp small b{white-space:nowrap;flex:none}
