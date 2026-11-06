@@ -364,6 +364,24 @@
     }
   }
 
+  /* ---- portfolio: Southwest Builders & Design projects (filter + tap to enlarge) ---- */
+  var pfg = $(".pf-grid");
+  if (pfg) {
+    var pcs = $$(".pf-chips button"), pli = $$("li", pfg);
+    pcs.forEach(function (b) {
+      b.addEventListener("click", function () {
+        pcs.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        var f = b.getAttribute("data-f");
+        pli.forEach(function (li) { li.hidden = f !== "all" && li.getAttribute("data-cat") !== f; });
+      });
+    });
+    $$("button", pfg).forEach(function (b) {
+      b.addEventListener("click", function () {
+        openSheet('<div class="s-media pf-full"><img src="' + esc(b.getAttribute("data-full")) + '" alt="' + esc(b.getAttribute("data-cap")) + ' project"></div><p class="num">' + esc(b.getAttribute("data-cap")) + '</p><h3 style="margin-top:.5rem">' + esc(b.getAttribute("data-t")) + '</h3><p class="s-sub">Built by Southwest Builders &amp; Design. See the finishes behind it on our showroom floor.</p><a class="btn" href="' + BASE + 'visit/#preview">Plan a visit' + ARROW + '</a>', b.getAttribute("data-t"));
+      });
+    });
+  }
+
   /* ---- visit: two-floor guide ---- */
   var zjson = $("#zones");
   if (zjson) {

@@ -17,7 +17,7 @@ PAGES = {
     "about":     {"out": "about/index.html",     "pre": "../", "nav": "about",     "title": "The Studio | Southwest Design Studio",
                   "desc": "The interior design showroom of Southwest Corridor, the Valley's design-build group. One address on Hayden Road for homeowners and the trade."},
     "portfolio": {"out": "portfolio/index.html", "pre": "../", "nav": "portfolio", "title": "Portfolio | Southwest Design Studio",
-                  "desc": "Photographs and video from the Southwest Design Studio showroom floor: kitchens, baths, finishes and rooms."},
+                  "desc": "Kitchens, baths, living spaces, casitas, pools and garages built by Southwest Builders &amp; Design, with finishes chosen on the Southwest Design Studio floor."},
     "services":  {"out": "services/index.html",  "pre": "../", "nav": "services",  "title": "Services | Southwest Design Studio",
                   "desc": "Full-home design, kitchens and baths, furnishing and styling for Valley homes, starting on the Scottsdale showroom floor."},
     "visit":     {"out": "visit/index.html",     "pre": "../", "nav": "visit",     "title": "Visit | Southwest Design Studio",
@@ -83,7 +83,7 @@ LAYOUT = """<!DOCTYPE html>
 </body>
 </html>
 """
-WORDS = {"home": "Step inside", "about": "The Studio", "portfolio": "The floor", "services": "Services", "visit": "Hayden Road"}
+WORDS = {"home": "Step inside", "about": "The Studio", "portfolio": "Projects", "services": "Services", "visit": "Hayden Road"}
 
 def ver(html, pre):
     """Stamp css/js links with a content hash so phones fetch fresh copies after every update."""

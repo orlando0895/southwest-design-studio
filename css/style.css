@@ -551,3 +551,25 @@ video{transition:opacity .35s}
 .corp small{gap:.6rem}
 .corp small span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .corp small b{white-space:nowrap;flex:none}
+
+/* Studio page: showroom gallery moved in from Portfolio */
+.showroom-gal{padding-top:clamp(1rem,4vw,3rem)}
+.gal-top.in-page{padding-top:1rem}
+.gal-top.in-page h2{font-size:clamp(2.4rem,8vw,4.6rem)}
+/* Portfolio: Southwest Builders & Design project gallery */
+.pf-hero{min-height:auto;padding-bottom:1rem}
+.pf{padding:0 0 clamp(2rem,5vw,4rem)}
+.pf-chips{margin-bottom:1.4rem}
+.pf-grid{list-style:none;columns:2;column-gap:.6rem}
+@media (min-width:760px){.pf-grid{columns:3;column-gap:.8rem}}
+@media (min-width:1200px){.pf-grid{columns:4}}
+.pf-grid li{break-inside:avoid;margin-bottom:.6rem}
+.pf-grid li[hidden]{display:none}
+.pf-grid button{display:block;width:100%;border-radius:8px;overflow:hidden;background:var(--bg3);cursor:zoom-in;position:relative}
+.pf-grid img{width:100%;height:auto;min-height:120px;object-fit:cover;transition:transform .8s var(--ease),opacity .5s}
+.pf-grid button:hover img{transform:scale(1.04)}
+.pf-grid button::after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.pf-grid button:hover::after,.pf-grid button:focus-visible::after{transform:none}
+.pf-credit{margin-top:1.4rem;color:var(--muted)}
+.sheet .s-media.pf-full img{object-fit:contain;background:#000}
+.pf-hero{padding-top:calc(var(--hd) + 3rem)}
