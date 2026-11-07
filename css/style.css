@@ -580,3 +580,18 @@ video{transition:opacity .35s}
 .ph h1 em,.ph .d2 em{color:var(--amber2)}
 .ph .lede{color:#F5F3EF;text-shadow:0 1px 12px rgba(0,0,0,.6)}
 .ph .num{color:var(--amber2);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+
+/* Corridor tiles: original square tile style, with each company's icon and link */
+.crafts a.f{color:inherit;text-decoration:none}
+.crafts .top{display:flex;justify-content:space-between;align-items:flex-start}
+.crafts .badge{width:clamp(48px,14vw,68px);height:auto;border-radius:50%;box-shadow:0 6px 18px -6px rgba(0,0,0,.6);transition:transform .6s var(--ease)}
+.crafts .bot{display:grid;gap:.45rem}
+.crafts .bot b{font-size:clamp(1.15rem,4.4vw,1.75rem);line-height:1.08}
+.crafts small{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--amber2);transition:color .6s}
+.crafts li:hover .badge,.crafts a.f:focus-visible .badge{transform:scale(1.08) rotate(-4deg)}
+.crafts li:hover small{color:var(--ink)}
+.crafts a.f:focus-visible{outline:2px solid var(--amber2);outline-offset:-4px}
+.crafts .soon{opacity:.7}
+.crafts li:hover .soon{background:var(--bg3);color:inherit}
+.crafts li:hover .soon .n,.crafts li:hover .soon small{color:var(--amber2)}
+.crafts li:hover .f:not(.soon){background:var(--grad);color:#111}
