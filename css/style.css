@@ -573,3 +573,10 @@ video{transition:opacity .35s}
 .pf-credit{margin-top:1.4rem;color:var(--muted)}
 .sheet .s-media.pf-full img{object-fit:contain;background:#000}
 .pf-hero{padding-top:calc(var(--hd) + 3rem)}
+
+/* photo heroes: keep text readable on bright showroom photos */
+.ph::after{background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.25) 22%,rgba(10,10,10,.62) 48%,rgba(10,10,10,.9) 72%,rgba(10,10,10,.97) 100%)}
+.ph h1,.ph .d2{text-shadow:0 2px 24px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.4)}
+.ph h1 em,.ph .d2 em{color:var(--amber2)}
+.ph .lede{color:#F5F3EF;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.ph .num{color:var(--amber2);text-shadow:0 1px 8px rgba(0,0,0,.6)}
