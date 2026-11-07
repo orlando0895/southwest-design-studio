@@ -595,3 +595,29 @@ video{transition:opacity .35s}
 .crafts li:hover .soon{background:var(--bg3);color:inherit}
 .crafts li:hover .soon .n,.crafts li:hover .soon small{color:var(--amber2)}
 .crafts li:hover .f:not(.soon){background:var(--grad);color:#111}
+
+/* doors: "view more" card, built from the logo's tile mosaic */
+.door-more{display:block;text-decoration:none;color:var(--cream);background:#0F0F0F;box-shadow:inset 0 0 0 1px rgba(238,131,16,.35)}
+.door-more::after{background:linear-gradient(180deg,rgba(10,10,10,.15) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,.95))}
+.dm-tiles{position:absolute;inset:0;z-index:-1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(6,1fr);gap:3px;padding:3px;opacity:.9}
+.dm-tiles i{border-radius:2px;background:#1B1B1B;animation:dmTile 4.8s var(--ease) infinite;animation-delay:calc((var(--k) * 37 % 24) * .16s)}
+.dm-tiles i:nth-child(3n){background:#232323}
+@keyframes dmTile{0%,62%,100%{background:#1B1B1B}20%{background:#EE8310}34%{background:#FCAF1D}48%{background:#E05403}}
+.dm-mark{width:64px;height:64px;margin-bottom:1rem;border-radius:50%;box-shadow:0 10px 30px -8px rgba(238,131,16,.6);transition:transform .8s var(--ease)}
+.door-more h3 em{color:var(--amber2)}
+.door-more h3{margin-bottom:.6rem}
+.dm-sub{color:var(--cream2);font-size:.92rem;margin-bottom:1.1rem;max-width:20rem}
+.dm-cta{position:relative;display:inline-flex;align-items:center;gap:.7rem;min-height:48px;padding:0 1.25rem;border-radius:999px;background:var(--grad);color:#111;font-weight:600;font-size:.9rem;overflow:hidden}
+.dm-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:dmShine 3.2s var(--ease) infinite 1s}
+@keyframes dmShine{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.dm-cta svg{width:16px;height:16px;transition:transform .5s var(--ease)}
+.door-more:hover .dm-cta svg,.door-more:focus-visible .dm-cta svg{transform:translateX(5px)}
+.door-more:hover .dm-mark{transform:rotate(-8deg) scale(1.06)}
+.door-more:focus-visible{outline:2px solid var(--amber2);outline-offset:3px}
+@media (min-width:1000px){.door-more{flex:.8 1 0}.door-more:hover{flex:1.1 1 0}}
+/* door-more: calmer mosaic, wider on desktop */
+.dm-tiles{opacity:.75}
+.dm-tiles i{animation-duration:7.2s;animation-name:dmTile2}
+@keyframes dmTile2{0%,14%,100%{background:#1B1B1B}5%{background:#EE8310}9%{background:#FCAF1D}}
+.dm-cta{white-space:nowrap}
+@media (min-width:1000px){.door-more{flex:1 1 0}.door-more:hover{flex:1.3 1 0}.door-more h3{font-size:clamp(1.9rem,2.4vw,2.4rem)}}

@@ -188,7 +188,7 @@
   window.SWDS_VL = VL;
 
   /* ---- doors: tap to peek, tap again to close; one open at a time ---- */
-  var doors = $$(".door");
+  var doors = $$(".door:not(.door-more)");
   function shut(door) {
     if (!door.classList.contains("peek")) return;
     door.classList.remove("peek");
