@@ -107,6 +107,8 @@
   });
 
   /* ---- lazy ambient video: load near view, play only while visible ---- */
+  // tall screens get the vertical cut where one exists (portfolio reel)
+  $$("video[data-src-p]").forEach(function (v) { if (innerHeight > innerWidth) { v.dataset.src = v.dataset.srcP; v.setAttribute("poster", v.dataset.posterP); var p = v.parentElement; if (p) { p.classList.add("tall"); p.style.backgroundImage = "url(" + v.dataset.posterP + ")"; } } });
   var lvs = $$("video.lv");
   if (lvs.length && "IntersectionObserver" in window) {
     var vio = new IntersectionObserver(function (es) {
