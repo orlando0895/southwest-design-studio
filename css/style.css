@@ -630,3 +630,12 @@ h1 em,h2 em,.d1 em,.d2 em,.d3 em,.ph h1 em,.ph .d2 em,.door-more h3 em{color:var
 .reel-frame{position:relative;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;background:#000 center/cover;box-shadow:0 30px 80px -30px rgba(0,0,0,.8),inset 0 0 0 1px rgba(238,131,16,.25)}
 .reel-frame.tall{aspect-ratio:9/16;max-height:82svh;margin:0 auto}
 .reel-frame video{width:100%;height:100%;object-fit:cover}
+
+/* reel: tap to open full screen */
+.reel-frame{cursor:pointer}
+.reel-frame::after{content:"Tap to watch full screen";position:absolute;right:.8rem;bottom:.8rem;padding:.45rem .85rem;border-radius:999px;background:rgba(10,10,10,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--cream);font-size:.76rem;font-weight:600;letter-spacing:.04em;pointer-events:none}
+@media (pointer:fine){.reel-frame::after{content:"Click to watch full screen"}}
+.reel-ov{position:fixed;inset:0;z-index:300;background:#000;display:grid;place-items:center}
+.reel-ov video{width:100%;height:100%;object-fit:contain}
+.reel-x{position:absolute;top:calc(.8rem + env(safe-area-inset-top,0px));right:.8rem;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(10,10,10,.6);color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.reel-x svg{width:18px;height:18px}

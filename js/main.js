@@ -107,8 +107,25 @@
   });
 
   /* ---- lazy ambient video: load near view, play only while visible ---- */
-  // tall screens get the vertical cut where one exists (portfolio reel)
-  $$("video[data-src-p]").forEach(function (v) { if (innerHeight > innerWidth) { v.dataset.src = v.dataset.srcP; v.setAttribute("poster", v.dataset.posterP); var p = v.parentElement; if (p) { p.classList.add("tall"); p.style.backgroundImage = "url(" + v.dataset.posterP + ")"; } } });
+  // portfolio reel: widescreen inline everywhere; tapping it on a phone opens the vertical cut full screen
+  $$("video[data-src-p]").forEach(function (v) {
+    var frame = v.parentElement; if (!frame) return;
+    frame.setAttribute("role", "button"); frame.setAttribute("tabindex", "0"); frame.setAttribute("aria-label", "Play the highlight reel full screen");
+    var open = function () {
+      var tall = innerHeight > innerWidth;
+      var ov = d.createElement("div"); ov.className = "reel-ov";
+      ov.innerHTML = '<video playsinline muted loop autoplay controls poster="' + (tall ? v.dataset.posterP : v.getAttribute("poster")) + '" src="' + (tall ? v.dataset.srcP : v.dataset.src) + '"></video><button type="button" class="reel-x" aria-label="Close">' + X + '</button>';
+      body.appendChild(ov); body.style.overflow = "hidden"; if (lenis) lenis.stop(); v.pause();
+      var fv = $("video", ov); play(fv);
+      var close = function () { fv.pause(); ov.remove(); body.style.overflow = ""; if (lenis) lenis.start(); if (!reduce) play(v); d.removeEventListener("keydown", esc2); };
+      var esc2 = function (e) { if (e.key === "Escape") close(); };
+      $(".reel-x", ov).addEventListener("click", close); d.addEventListener("keydown", esc2);
+      setTimeout(function () { $(".reel-x", ov).focus(); }, 50);
+    };
+    frame.addEventListener("click", open);
+    frame.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  });
+
   var lvs = $$("video.lv");
   if (lvs.length && "IntersectionObserver" in window) {
     var vio = new IntersectionObserver(function (es) {
