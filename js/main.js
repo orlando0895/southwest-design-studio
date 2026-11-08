@@ -126,6 +126,11 @@
     frame.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
   });
 
+  // showroom gallery on phones: full vertical recordings, and every slide shows its whole frame over a blurred fill
+  if (innerHeight > innerWidth) {
+    $$(".gal-s video[data-src-m]").forEach(function (v) { v.dataset.src = v.dataset.srcM; v.setAttribute("poster", v.dataset.posterM); if (v.getAttribute("src")) v.src = v.dataset.srcM; });
+    $$(".gal-s").forEach(function (f) { var m = $("img,video", f); if (!m) return; var u = m.tagName === "IMG" ? m.getAttribute("src") : m.getAttribute("poster"); f.style.setProperty("--fill", "url(" + u + ")"); f.classList.add("fit"); });
+  }
   var lvs = $$("video.lv");
   if (lvs.length && "IntersectionObserver" in window) {
     var vio = new IntersectionObserver(function (es) {
