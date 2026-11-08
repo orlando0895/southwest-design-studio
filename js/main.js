@@ -399,11 +399,33 @@
         pli.forEach(function (li) { li.hidden = f !== "all" && li.getAttribute("data-cat") !== f; });
       });
     });
-    $$("button", pfg).forEach(function (b) {
-      b.addEventListener("click", function () {
-        openSheet('<div class="s-media pf-full"><img src="' + esc(b.getAttribute("data-full")) + '" alt="' + esc(b.getAttribute("data-cap")) + ' project"></div><p class="num">' + esc(b.getAttribute("data-cap")) + '</p><h3 style="margin-top:.5rem">' + esc(b.getAttribute("data-t")) + '</h3><p class="s-sub">Built by Southwest Builders &amp; Design. See the finishes behind it on our showroom floor.</p><a class="btn" href="' + BASE + 'visit/#preview">Plan a visit' + ARROW + '</a>', b.getAttribute("data-t"));
+    var pfOpen = function (b) { openSheet('<div class="s-media pf-full"><img src="' + esc(b.getAttribute("data-full")) + '" alt="' + esc(b.getAttribute("data-cap")) + ' project"></div><p class="num">' + esc(b.getAttribute("data-cap")) + '</p><h3 style="margin-top:.5rem">' + esc(b.getAttribute("data-t")) + '</h3><p class="s-sub">Built by Southwest Builders &amp; Design. See the finishes behind it on our showroom floor.</p><a class="btn" href="' + BASE + 'visit/#preview">Plan a visit' + ARROW + '</a>', b.getAttribute("data-t")); };
+    pfg.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) pfOpen(b); });
+    // phones: two endless columns drifting in opposite directions (left down, right up)
+    var mq = matchMedia("(max-width:759px)"), mar = null;
+    var buildMarquee = function () {
+      if (mar) { mar.remove(); mar = null; }
+      pfg.classList.remove("pf-hide");
+      if (!mq.matches || reduce) return;
+      var items = pli.filter(function (li) { return !li.hidden; }).map(function (li) { return $("button", li); });
+      if (items.length < 4) return;
+      mar = d.createElement("div"); mar.className = "pf-mq";
+      [0, 1].forEach(function (c) {
+        var col = d.createElement("div"); col.className = "pf-col " + (c ? "up" : "down");
+        var track = d.createElement("div"); track.className = "pf-trk";
+        var mine = items.filter(function (_, i) { return i % 2 === c; });
+        track.style.setProperty("--dur", Math.max(24, mine.length * 5.5) + "s");
+        [0, 1].forEach(function (copy) { mine.forEach(function (b) { var k = b.cloneNode(true); var ki = k.querySelector("img"); if (ki) ki.loading = "eager"; if (copy) k.setAttribute("aria-hidden", "true"), k.tabIndex = -1; track.appendChild(k); }); });
+        col.appendChild(track); mar.appendChild(col);
+        var hold = function () { track.classList.add("paused"); }, go = function () { track.classList.remove("paused"); };
+        col.addEventListener("touchstart", hold, { passive: true }); col.addEventListener("touchend", function () { setTimeout(go, 1200); }); col.addEventListener("touchcancel", go);
       });
-    });
+      mar.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) pfOpen(b); });
+      pfg.parentNode.insertBefore(mar, pfg); pfg.classList.add("pf-hide");
+    };
+    pcs.forEach(function (b) { b.addEventListener("click", buildMarquee); });
+    if (mq.addEventListener) mq.addEventListener("change", buildMarquee);
+    buildMarquee();
   }
 
   /* ---- visit: two-floor guide ---- */
