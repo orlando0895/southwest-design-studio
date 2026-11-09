@@ -35,6 +35,7 @@ LAYOUT = """<!DOCTYPE html>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#0A0A0A">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Southwest Design Studio">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{site}/media/og.jpg">
