@@ -658,3 +658,28 @@ h1 em,h2 em,.d1 em,.d2 em,.d3 em,.ph h1 em,.ph .d2 em,.door-more h3 em{color:var
 @keyframes pfDown{from{transform:translateY(calc(-50% - .3rem))}to{transform:translateY(0)}}
 .pf-trk button{display:block;width:100%;border-radius:8px;overflow:hidden;background:var(--bg3);flex:none}
 .pf-trk img{width:100%;height:auto;display:block}
+
+/* ===== Owner feedback, Nov 2026: bold Arial throughout, no italics, bigger logo with division line, no tiles ===== */
+:root{--serif:Arial,"Helvetica Neue",Helvetica,sans-serif;--sans:Arial,"Helvetica Neue",Helvetica,sans-serif;--hd:92px}
+@media (min-width:1024px){:root{--hd:112px}}
+body{font-family:var(--sans)}
+*,*::before,*::after{font-style:normal!important}
+h1,h2,h3,.serif,.d1,.d2,.d3{font-family:var(--sans);font-weight:700;letter-spacing:-.02em;line-height:1.04}
+em,i{font-weight:700}
+h1 em,h2 em,h3 em{color:var(--amber)}
+.num,.w-ch .cn,.svc .cn,.steps .sn,.st-s figcaption b,.k-card b,.y-sum b,.vbar .ct,.crafts b,.gal-s figcaption b,.gal-count,.iso-lab,.zlist b,.door-ring span,.menu-ov nav a,.brand{font-family:var(--sans);font-weight:700}
+.menu-ov nav a{letter-spacing:-.02em}
+b,strong,.btn,.nav a,.menu-btn{font-weight:700}
+.tiles{display:none!important}
+.crafts li:hover .f,.crafts.wave li .f{animation:none!important}
+body{animation:pgin .4s ease both}
+@keyframes pgin{from{opacity:0}to{opacity:1}}
+body.leaving{opacity:0;transition:opacity .26s ease}
+@media (prefers-reduced-motion:reduce){body{animation:none}}
+.brand-w{display:inline-flex;flex-direction:column;align-items:center;gap:.25rem}
+.brand img{height:56px}
+.div-of{font:700 .62rem/1.2 var(--sans);letter-spacing:.04em;color:var(--amber);text-decoration:none;white-space:nowrap}
+.div-of:hover{text-decoration:underline}
+.ft .brand img{height:76px}
+.ft .div-of{font-size:.72rem}
+@media (min-width:1024px){.brand img{height:78px}.div-of{font-size:.74rem}}
