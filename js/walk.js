@@ -1,5 +1,5 @@
 /* The walk: real tour footage played by scroll. Scroll is your footsteps.
-   223 graded frames per orientation (landscape d/, subject-tracked portrait m/).
+   194 graded frames per orientation (landscape d/, subject-tracked portrait m/).
    Frames load coarse-to-fine so the walk works within a second and sharpens as it fills.
    Reduced motion: steps between chapter stills, no blending. No JS: poster + text. */
 (function () {
@@ -7,14 +7,14 @@
   if (!sec) return;
   var stage = sec.querySelector(".stage"), canvas = stage.querySelector("canvas"), ctx = canvas.getContext("2d");
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var N = 223, BASE = sec.getAttribute("data-base");
-  var HOLD = 69, LAST = N - 1, ENDS = { d: N - 1, m: 200 };
+  var N = 194, BASE = sec.getAttribute("data-base");
+  var HOLD = 40, LAST = N - 1, ENDS = { d: N - 1, m: 171 };
   // scroll progress -> frame: hero hold, walk to the kitchen, pause for hotspots, walk to Level 2, arrival hold
   var KEYS = [];
   function keys() { KEYS = [[0, 0], [0.045, 0], [0.34, HOLD], [0.45, HOLD], [0.93, LAST], [1, LAST]]; STEPS[STEPS.length - 1] = LAST; }
-  var STEPS = [0, 30, HOLD, 100, 140, 175, 200, LAST];
+  var STEPS = [0, 12, HOLD, 71, 111, 146, 171, LAST];
   // frames with no camera blur (sharpest of their neighbours, scored offline); the walk comes to rest on these
-  var SHARP = {"d":[0,2,8,20,23,34,37,44,48,51,55,68,69,78,82,97,105,113,120,129,144,153,164,176,179,184,197,200,202,221,222],"m":[0,6,14,25,34,38,44,51,54,66,69,71,86,91,97,102,105,113,120,129,133,137,146,152,155,160,163,169,176,184,188,197,200,202,208,221,222]};
+  var SHARP = {"d":[0,2,8,15,19,22,26,39,40,49,53,68,76,84,91,100,115,124,135,147,150,155,168,171,173,192,193],"m":[0,6,15,22,25,37,40,42,57,62,68,73,76,84,91,100,104,108,117,123,126,131,134,140,147,155,159,168,171,173,179,192,193]};
   function sharpNear(f) {
     var best = Math.round(f), bd = 1e9;
     (SHARP[set] || []).forEach(function (i) { if (i <= LAST && Math.abs(i - f) < bd) { bd = Math.abs(i - f); best = i; } });
