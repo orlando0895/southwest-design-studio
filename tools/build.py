@@ -41,9 +41,6 @@ LAYOUT = """<!DOCTYPE html>
 <meta property="og:image" content="{site}/media/og.jpg">
 <meta property="og:url" content="{site}/{outurl}">
 <link rel="canonical" href="{site}/{outurl}">
-<link rel="preload" href="{pre}fonts/bodoni-moda-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{pre}fonts/bodoni-moda-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{pre}fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{pre}css/style.css">
 <link rel="icon" type="image/png" href="{pre}img/brand/favicon.png">
 <link rel="apple-touch-icon" href="{pre}img/brand/mark-180.png">
