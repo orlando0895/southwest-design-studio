@@ -10,8 +10,8 @@
   --amber:#EE8310; --amber2:#FCAF1D; --amber3:#E05403; --grad:linear-gradient(90deg,#FCAF1D,#EE8310 55%,#E05403);
   --sand:#F3F1ED; --sand2:#E6E3DD; --ink:#111111; --ink2:#3F3D3A; --ink-muted:#66625C; --amber-deep:#A84302;
   --gut:clamp(1.15rem,4.5vw,3.25rem); --max:1360px; --r:6px;
-  --serif:"Bodoni Moda",Georgia,"Times New Roman",serif;
-  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:Arial,"Helvetica Neue",Helvetica,sans-serif;
+  --sans:Arial,"Helvetica Neue",Helvetica,sans-serif;
   --ease:cubic-bezier(.16,1,.3,1); --ease2:cubic-bezier(.65,0,.35,1);
   --hd:64px; --safe-b:env(safe-area-inset-bottom,0px);
 }
