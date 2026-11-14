@@ -677,3 +677,21 @@ body.leaving{opacity:0;transition:opacity .26s ease}
 .ft .brand img{height:76px}
 .ft .div-of{font-size:.72rem}
 @media (min-width:1024px){.brand img{height:78px}.div-of{font-size:.74rem}}
+
+/* ===== Real showroom photos (Nov 2026) ===== */
+.rm-row{display:flex;gap:.75rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--gut) .5rem;margin:0 calc(var(--gut) * -1);scrollbar-width:none;overscroll-behavior-x:contain}
+.rm-row::-webkit-scrollbar{display:none}
+.rm-s{position:relative;flex:0 0 80%;aspect-ratio:3/4;margin:0;border-radius:var(--r);overflow:hidden;background:var(--bg3);scroll-snap-align:center}
+.rm-s img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.rm-s:hover img{transform:scale(1.04)}
+.rm-s::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(180deg,transparent,rgba(10,10,10,.85))}
+.rm-s figcaption{position:absolute;z-index:1;left:1rem;right:1rem;bottom:1rem}
+.rm-s .lv{display:block;font-size:.7rem;font-weight:700;letter-spacing:.14em;color:var(--amber)}
+.rm-s b{display:block;font-size:1.45rem;line-height:1.05;margin-top:.3rem}
+.rm-s figcaption span:last-child{display:block;margin-top:.3rem;font-size:.86rem;color:#E4DACB}
+@media (min-width:700px){.rm-s{flex-basis:44%}}
+@media (min-width:1100px){.rm-s{flex-basis:calc(25% - .6rem)}}
+@media (min-width:1024px){.door-row{flex-wrap:wrap}.door{flex:1 1 calc(33.333% - .8rem);height:min(48svh,480px)}}
+.fam-ph{display:grid;grid-template-columns:1fr;gap:.75rem;margin:0 0 1.6rem}
+.fam-ph img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r)}
+@media (min-width:700px){.fam-ph{grid-template-columns:1.4fr 1fr}}
