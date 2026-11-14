@@ -701,3 +701,4 @@ body.leaving{opacity:0;transition:opacity .26s ease}
 .rm-lv{margin-top:1.4rem}
 .rm-lab{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin:0 0 .7rem}
 .rm-more{margin-top:1.8rem}
+@media (min-width:1100px){.rm-sec .rm-s{flex-basis:calc(20% - .6rem)}}
