@@ -7,21 +7,24 @@
   if (!sec) return;
   var stage = sec.querySelector(".stage"), canvas = stage.querySelector("canvas"), ctx = canvas.getContext("2d");
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var N = 194, BASE = sec.getAttribute("data-base");
-  var HOLD = 40, LAST = N - 1, ENDS = { d: N - 1, m: 171 };
+  var N = 166, BASE = sec.getAttribute("data-base");
+  var HOLD = 12, LAST = N - 1, ENDS = { d: N - 1, m: 143 };
   // scroll progress -> frame: hero hold, walk to the kitchen, pause for hotspots, walk to Level 2, arrival hold
   var KEYS = [];
-  function keys() { KEYS = [[0, 0], [0.045, 0], [0.34, HOLD], [0.45, HOLD], [0.93, LAST], [1, LAST]]; STEPS[STEPS.length - 1] = LAST; }
-  var STEPS = [0, 12, HOLD, 71, 111, 146, 171, LAST];
+  function keys() { KEYS = [[0, 0], [0.045, 0], [0.16, HOLD], [0.45, HOLD], [0.93, LAST], [1, LAST]]; STEPS[STEPS.length - 1] = LAST; }
+  var STEPS = [0, HOLD, 43, 83, 118, 143, LAST];
   // frames with no camera blur (sharpest of their neighbours, scored offline); the walk comes to rest on these
-  var SHARP = {"d":[0,2,8,15,19,22,26,39,40,49,53,68,76,84,91,100,115,124,135,147,150,155,168,171,173,192,193],"m":[0,6,15,22,25,37,40,42,57,62,68,73,76,84,91,100,104,108,117,123,126,131,134,140,147,155,159,168,171,173,179,192,193]};
+  var SHARP = {"d":[11,12,21,25,40,48,56,63,72,87,96,107,119,122,127,140,143,145,164,165],"m":[9,12,14,29,34,40,45,48,56,63,72,76,80,89,95,98,103,106,112,119,127,131,140,143,145,151,164,165]};
   function sharpNear(f) {
     var best = Math.round(f), bd = 1e9;
     (SHARP[set] || []).forEach(function (i) { if (i <= LAST && Math.abs(i - f) < bd) { bd = Math.abs(i - f); best = i; } });
     return bd <= 8 ? best : Math.round(f);
   }
 
-  var set = null, imgs = [], ok = [], loading = 0, queue = [], gen = 0;
+  var set = null, imgs = [], ok = [], loading = 0, queue = [], gen = 0, woke = false, later = [];
+  function wake() { if (woke) return; woke = true; queue = queue.concat(later); later = []; pump(); }
+  addEventListener("scroll", wake, { passive: true, once: true }); addEventListener("touchstart", wake, { passive: true, once: true });
+  addEventListener("load", function () { setTimeout(wake, 2500); });
   function orient() { return innerHeight > innerWidth * 1.05 ? "m" : "d"; }
   function order() {
     var seen = {}, out = [], strides = [32, 16, 8, 4, 2, 1];
@@ -30,7 +33,7 @@
     return out;
   }
   function pump() {
-    while (loading < 6 && queue.length) {
+    while (loading < (woke ? 6 : 3) && queue.length) {
       if (ok[queue[0]]) { queue.shift(); continue; }
       (function (i, g) {
         loading++;
@@ -57,6 +60,7 @@
   function useSet(s) {
     if (s === set) return;
     set = s; LAST = ENDS[s]; keys(); gen++; imgs = []; ok = []; queue = order(); loading = 0;
+    if (!woke) { later = queue.slice(14); queue = queue.slice(0, 14); }
     sec.setAttribute("data-set", s);
     pump();
   }
@@ -183,7 +187,7 @@
   // end of the walk: the Level 02 link jumps to the three rooms below
   var nextLink = stage.querySelector(".w-next");
   if (nextLink) nextLink.addEventListener("click", function (e) {
-    var t = document.getElementById("doors"); if (!t) return;
+    var t = document.getElementById("real-rooms"); if (!t) return;
     e.preventDefault();
     if (window.SWDS_LENIS) window.SWDS_LENIS.scrollTo(t, { offset: -20 }); else t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
   });

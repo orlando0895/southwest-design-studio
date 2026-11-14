@@ -107,6 +107,7 @@
 
   // showroom gallery on phones: full vertical recordings, and every slide shows its whole frame over a blurred fill
   if (innerHeight > innerWidth) {
+    $$(".gal-s img[data-src-m]").forEach(function (im) { im.src = im.dataset.srcM; });
     $$(".gal-s video[data-src-m]").forEach(function (v) { v.dataset.src = v.dataset.srcM; v.setAttribute("poster", v.dataset.posterM); if (v.getAttribute("src")) v.src = v.dataset.srcM; });
     $$(".gal-s").forEach(function (f) { var m = $("img,video", f); if (!m) return; var u = m.tagName === "IMG" ? m.getAttribute("src") : m.getAttribute("poster"); f.style.setProperty("--fill", "url(" + u + ")"); f.classList.add("fit"); });
   }
@@ -393,7 +394,8 @@
         var col = d.createElement("div"); col.className = "pf-col " + (c ? "up" : "down");
         var track = d.createElement("div"); track.className = "pf-trk";
         var mine = items.filter(function (_, i) { return i % 2 === c; });
-        track.style.setProperty("--dur", Math.max(24, mine.length * 5.5) + "s");
+        mine = mine.slice(0, 12);
+        track.style.setProperty("--dur", Math.max(30, mine.length * 3.2) + "s");
         [0, 1].forEach(function (copy) { mine.forEach(function (b) { var k = b.cloneNode(true); var ki = k.querySelector("img"); if (ki) ki.loading = "eager"; if (copy) k.setAttribute("aria-hidden", "true"), k.tabIndex = -1; track.appendChild(k); }); });
         col.appendChild(track); mar.appendChild(col);
         var hold = function () { track.classList.add("paused"); }, go = function () { track.classList.remove("paused"); };
