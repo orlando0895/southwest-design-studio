@@ -386,7 +386,8 @@
     var buildMarquee = function () {
       if (mar) { mar.remove(); mar = null; }
       pfg.classList.remove("pf-hide");
-      if (!mq.matches || reduce) return;
+      var allOn = pcs.some(function (x) { return x.getAttribute("aria-pressed") === "true" && x.getAttribute("data-f") === "all"; });
+      if (!mq.matches || reduce || !allOn) return;
       var items = pli.filter(function (li) { return !li.hidden; }).map(function (li) { return $("button", li); });
       if (items.length < 4) return;
       mar = d.createElement("div"); mar.className = "pf-mq";
