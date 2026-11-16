@@ -22,6 +22,8 @@ PAGES = {
                   "desc": "Full-home design, kitchens and baths, furnishing and styling for Valley homes, starting on the Scottsdale showroom floor."},
     "visit":     {"out": "visit/index.html",     "pre": "../", "nav": "visit",     "title": "Visit | Southwest Design Studio",
                   "desc": "Visit Southwest Design Studio at 15001 N Hayden Rd Ste 111, Scottsdale, AZ 85260. Request a private preview with a designer."},
+    "privacy":   {"out": "privacy/index.html", "pre": "../", "nav": "privacy", "title": "Privacy Policy | Southwest Design Studio",
+                  "desc": "How Southwest Design Studio collects and uses the information you send through this website."},
 }
 NAV = [("", "Home"), ("about", "The Studio"), ("portfolio", "Portfolio"), ("services", "Services"), ("visit", "Visit")]
 
@@ -71,7 +73,7 @@ LAYOUT = """<!DOCTYPE html>
       <div><p>15001 N Hayden Rd Ste 111<br>Scottsdale, AZ 85260</p><p style="margin-top:.5rem"><a href="tel:+18776460167">(877) 646-0167</a> &middot; Mon to Fri, 9 to 5</p></div>
       <nav aria-label="Footer">{fnav}</nav>
     </div>
-    <p class="ft-base">&copy; 2026 Southwest Design Studio, LLC. All rights reserved.</p>
+    <p class="ft-base">&copy; 2026 Southwest Design Studio, LLC. All rights reserved. <a href="{pre}privacy/">Privacy policy</a></p>
   </div>
 </footer>
 <script src="{pre}js/vendor/lenis.min.js" defer></script>
@@ -80,7 +82,7 @@ LAYOUT = """<!DOCTYPE html>
 </body>
 </html>
 """
-WORDS = {"home": "Step inside", "about": "The Studio", "portfolio": "Projects", "services": "Services", "visit": "Hayden Road"}
+WORDS = {"home": "Step inside", "about": "The Studio", "portfolio": "Projects", "services": "Services", "visit": "Hayden Road", "privacy": "Privacy"}
 
 def ver(html, pre):
     """Stamp css/js links with a content hash so phones fetch fresh copies after every update."""

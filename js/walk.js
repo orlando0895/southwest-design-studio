@@ -32,7 +32,10 @@
     strides.forEach(function (s) { for (var i = 0; i < N; i += s) if (!seen[i]) { seen[i] = 1; out.push(i); } });
     return out;
   }
+  var pageReady = document.readyState === "complete";
+  addEventListener("load", function () { pageReady = true; pump(); });
   function pump() {
+    if (!pageReady && !woke) return;
     while (loading < (woke ? 6 : 3) && queue.length) {
       if (ok[queue[0]]) { queue.shift(); continue; }
       (function (i, g) {
