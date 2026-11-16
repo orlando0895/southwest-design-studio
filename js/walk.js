@@ -133,7 +133,7 @@
   }
   function overlays(p, f) {
     if (hero) { var h = Math.max(0, 1 - p / 0.03); hero.style.opacity = h; hero.style.transform = "translateY(" + (-(1 - h) * 40) + "px)"; hero.style.visibility = h < 0.01 ? "hidden" : ""; }
-    var inHold = p > 0.345 && p < 0.445;
+    var inHold = p > 0.165 && p < 0.445;
     chs.forEach(function (c) {
       var a = +c.getAttribute("data-from"), b = +c.getAttribute("data-to");
       c.classList.toggle("on", !inHold && p > 0.03 && p < 0.925 && f >= a && f <= b);
