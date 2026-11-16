@@ -235,8 +235,8 @@
       var s = slides[idx]; sv.setAttribute("data-save", s.getAttribute("data-id")); sv.setAttribute("data-label", s.getAttribute("data-label"));
       sv.setAttribute("aria-pressed", VL.has(s.getAttribute("data-id")) ? "true" : "false");
       var v = slideV(idx); dur = 5000; startT = performance.now();
-      if (v) { if (!v.getAttribute("src")) v.src = v.dataset.src; try { v.currentTime = 0; } catch (e) {} if (inView && !reduce) play(v); v.onloadedmetadata = function () { dur = Math.max(3500, Math.min(7000, (v.duration || 5) * 1000)); }; if (v.duration) dur = Math.max(3500, Math.min(7000, v.duration * 1000)); }
-      var next = slideV((idx + 1) % slides.length); if (next && !next.getAttribute("src")) { next.preload = "auto"; next.src = next.dataset.src; }
+      if (v && inView) { if (!v.getAttribute("src")) v.src = v.dataset.src; try { v.currentTime = 0; } catch (e) {} if (inView && !reduce) play(v); v.onloadedmetadata = function () { dur = Math.max(3500, Math.min(7000, (v.duration || 5) * 1000)); }; if (v.duration) dur = Math.max(3500, Math.min(7000, v.duration * 1000)); }
+      var next = slideV((idx + 1) % slides.length); if (inView && next && !next.getAttribute("src")) { next.preload = "auto"; next.src = next.dataset.src; }
     };
     sv._sv = 1;
     sv.addEventListener("click", function () { VL.toggle(sv.getAttribute("data-save"), sv.getAttribute("data-label")); });
@@ -259,7 +259,7 @@
     new IntersectionObserver(function (es) {
       inView = es[0].isIntersecting;
       var v = slideV(idx);
-      if (inView) { startT = performance.now() - (parseFloat(bars[idx].style.getPropertyValue("--p")) || 0) * dur; if (v && !reduce) play(v); } else if (v) v.pause();
+      if (inView) { startT = performance.now() - (parseFloat(bars[idx].style.getPropertyValue("--p")) || 0) * dur; if (v && !reduce) play(v); var nx = slideV((idx + 1) % slides.length); if (nx && !nx.getAttribute("src")) { nx.preload = "metadata"; nx.src = nx.dataset.src; } } else if (v) v.pause();
     }, { threshold: 0.45 }).observe(st);
     show(0);
     if (reduce) $(".st-hint", st).textContent = "Tap for the next";

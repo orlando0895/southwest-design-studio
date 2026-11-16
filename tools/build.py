@@ -50,7 +50,7 @@ LAYOUT = """<!DOCTYPE html>
 <body class="pg-{key}">
 <a class="skip" href="#main">Skip to content</a>
 <header class="hd">
-  <div class="brand-w"><a class="brand" href="{pre}" aria-label="Southwest Design Studio, home"><img src="{pre}img/brand/logo-sm.png" alt="Southwest Design Studio, LLC" width="562" height="165"></a><a class="div-of" href="https://swcorridor.com" target="_blank" rel="noopener">A Division of Southwest Corridor, LLC</a></div>
+  <div class="brand-w"><a class="brand" href="{pre}" aria-label="Southwest Design Studio, home"><img src="{pre}img/brand/logo-sm.webp" alt="Southwest Design Studio, LLC" width="562" height="165"></a><a class="div-of" href="https://swcorridor.com" target="_blank" rel="noopener">A Division of Southwest Corridor, LLC</a></div>
   <nav class="nav" aria-label="Primary">{nav}</nav>
   <div class="hd-r">
     <a class="btn" href="{pre}visit/">Plan Your Visit{arrow}</a>
@@ -67,7 +67,7 @@ LAYOUT = """<!DOCTYPE html>
 <footer class="ft">
   <div class="wrap">
     <div class="ft-grid">
-      <div><div class="brand-w"><a class="brand" href="{pre}" aria-label="Southwest Design Studio, home"><img src="{pre}img/brand/logo-sm.png" alt="Southwest Design Studio, LLC" width="562" height="165" loading="lazy"></a><a class="div-of" href="https://swcorridor.com" target="_blank" rel="noopener">A Division of Southwest Corridor, LLC</a></div><p style="margin-top:.6rem;max-width:22rem">A luxury interior design showroom serving Paradise Valley, North Scottsdale, Arcadia, Fountain Hills, Carefree and the East Valley. Part of the Southwest Corridor group.</p></div>
+      <div><div class="brand-w"><a class="brand" href="{pre}" aria-label="Southwest Design Studio, home"><img src="{pre}img/brand/logo-sm.webp" alt="Southwest Design Studio, LLC" width="562" height="165" loading="lazy"></a><a class="div-of" href="https://swcorridor.com" target="_blank" rel="noopener">A Division of Southwest Corridor, LLC</a></div><p style="margin-top:.6rem;max-width:22rem">A luxury interior design showroom serving Paradise Valley, North Scottsdale, Arcadia, Fountain Hills, Carefree and the East Valley. Part of the Southwest Corridor group.</p></div>
       <div><p>15001 N Hayden Rd Ste 111<br>Scottsdale, AZ 85260</p><p style="margin-top:.5rem"><a href="tel:+18776460167">(877) 646-0167</a> &middot; Mon to Fri, 9 to 5</p></div>
       <nav aria-label="Footer">{fnav}</nav>
     </div>
