@@ -419,7 +419,7 @@
     tabs.forEach(function (t, i) {
       t.addEventListener("click", function () {
         tabs.forEach(function (x, j) { x.setAttribute("aria-selected", j === i ? "true" : "false"); x.tabIndex = j === i ? 0 : -1; lists[j].hidden = j !== i; });
-        iso.classList.toggle("l1", i === 0); iso.classList.toggle("l2", i === 1); light(null);
+        if (iso) { iso.classList.toggle("l1", i === 0); iso.classList.toggle("l2", i === 1); } light(null);
       });
       t.addEventListener("keydown", function (e) { var k = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (k) { var n = tabs[(i + k + tabs.length) % tabs.length]; n.focus(); n.click(); } });
     });

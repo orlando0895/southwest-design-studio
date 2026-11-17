@@ -716,3 +716,7 @@ body.leaving{opacity:0;transition:opacity .26s ease}
 .rm-go svg{width:16px;height:16px}
 @media (min-width:1100px){.rm-sec .rm-s{flex-basis:calc(16.666% - .63rem)}}
 @media (min-width:1100px){.rm-sec .rm-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;overflow:visible;margin:0;padding:0}.rm-sec .rm-s{flex:none;aspect-ratio:4/3}}
+.zlist button{grid-template-columns:1fr auto}
+.zlist b{line-height:1.2}
+.sheet .s-media.held img,.sheet .s-media.held video{filter:none;transform:none}
+.sheet .s-media.held::after{content:none}
