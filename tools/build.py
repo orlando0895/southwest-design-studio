@@ -12,8 +12,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>'
 
 PAGES = {
-    "home":      {"out": "index.html",           "pre": "",    "nav": "",          "title": "Southwest Design Studio | Luxury Interior Design Showroom, Greater Phoenix",
-                  "desc": "Walk through a two-floor luxury interior design showroom on Hayden Road: working kitchens, baths, stone, cabinetry and a wine room, for homes in Paradise Valley, North Scottsdale, Arcadia, Fountain Hills, Carefree and the East Valley."},
+    "home":      {"out": "index.html",           "pre": "",    "nav": "",          "title": "Southwest Design Studio | Scottsdale Kitchen, Bath & Design Showroom",
+                  "desc": "Walk two floors of finished kitchens, baths, closets and a wine room on Hayden Road in Scottsdale. Choose your stone, cabinetry and fixtures in person with a designer."},
     "about":     {"out": "about/index.html",     "pre": "../", "nav": "about",     "title": "The Studio | Southwest Design Studio",
                   "desc": "The interior design showroom of Southwest Corridor, the Valley's design-build group. One address on Hayden Road for homeowners and the trade."},
     "portfolio": {"out": "portfolio/index.html", "pre": "../", "nav": "portfolio", "title": "Portfolio | Southwest Design Studio",
@@ -40,7 +40,11 @@ LAYOUT = """<!DOCTYPE html>
 <meta property="og:site_name" content="Southwest Design Studio">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{site}/media/og.jpg">
+<meta property="og:image" content="{site}/media/og.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Southwest Design Studio: the Black and Brass kitchen in the Scottsdale showroom">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="{site}/{outurl}">
 <link rel="canonical" href="{site}/{outurl}">
 <link rel="stylesheet" href="{pre}css/style.css">
