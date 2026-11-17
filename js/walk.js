@@ -11,7 +11,7 @@
   var HOLD = 12, LAST = N - 1, ENDS = { d: N - 1, m: 143 };
   // scroll progress -> frame: hero hold, walk to the kitchen, pause for hotspots, walk to Level 2, arrival hold
   var KEYS = [];
-  function keys() { KEYS = [[0, 0], [0.045, 0], [0.16, HOLD], [0.45, HOLD], [0.93, LAST], [1, LAST]]; STEPS[STEPS.length - 1] = LAST; }
+  function keys() { KEYS = [[0, 0], [0.045, 0], [0.16, HOLD], [0.31, HOLD], [0.93, LAST], [1, LAST]]; STEPS[STEPS.length - 1] = LAST; }
   var STEPS = [0, HOLD, 43, 83, 118, 143, LAST];
   // frames with no camera blur (sharpest of their neighbours, scored offline); the walk comes to rest on these
   var SHARP = {"d":[11,12,21,25,40,48,56,63,72,87,96,107,119,122,127,140,143,145,164,165],"m":[9,12,14,29,34,40,45,48,56,63,72,76,80,89,95,98,103,106,112,119,127,131,140,143,145,151,164,165]};
@@ -133,7 +133,7 @@
   }
   function overlays(p, f) {
     if (hero) { var h = Math.max(0, 1 - p / 0.03); hero.style.opacity = h; hero.style.transform = "translateY(" + (-(1 - h) * 40) + "px)"; hero.style.visibility = h < 0.01 ? "hidden" : ""; }
-    var inHold = p >= 0.16 && p < 0.445;
+    var inHold = p >= 0.16 && p < 0.305;
     chs.forEach(function (c) {
       var a = +c.getAttribute("data-from"), b = +c.getAttribute("data-to");
       c.classList.toggle("on", !inHold && p > 0.03 && p < 0.925 && f >= a && f <= b);
