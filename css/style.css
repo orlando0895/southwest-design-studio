@@ -705,3 +705,4 @@ body.leaving{opacity:0;transition:opacity .26s ease}
 
 .floors.no-plan{display:block;max-width:760px}
 .cta-only{justify-content:center}
+.w-arrive{padding:0 var(--gut) calc(12vh + var(--safe-b))}
